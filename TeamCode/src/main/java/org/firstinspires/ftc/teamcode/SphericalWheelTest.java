@@ -39,16 +39,7 @@ import com.qualcomm.robotcore.util.Range;
 
 
 /**
- * This file contains an minimal example of a Linear "OpMode". An OpMode is a 'program' that runs in either
- * the autonomous or the teleop period of an FTC match. The names of OpModes appear on the menu
- * of the FTC Driver Station. When an selection is made from the menu, the corresponding OpMode
- * class is instantiated on the Robot Controller and executed.
- *
- * This particular OpMode just executes a basic Tank Drive Teleop for a two wheeled robot
- * It includes all the skeletal structure that all linear OpModes contain.
- *
- * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
- * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
+ * This will eventually be test code for Spherical Wheel Driving.
  */
 
 @TeleOp(name="Basic: Linear OpMode", group="Linear Opmode")
@@ -56,6 +47,7 @@ import com.qualcomm.robotcore.util.Range;
 public class SphericalWheelTest extends LinearOpMode {
 
     // Declare OpMode members.
+    // The motor names are temporary for now
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor motorOne = null;
     private DcMotor motorTwo = null;
@@ -75,6 +67,7 @@ public class SphericalWheelTest extends LinearOpMode {
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
+        // The directions for the motors are yet to be determined
         motorOne.setDirection(DcMotor.Direction.FORWARD);
         motorTwo.setDirection(DcMotorSimple.Direction.FORWARD);
         motorThree.setDirection(DcMotor.Direction.FORWARD);
