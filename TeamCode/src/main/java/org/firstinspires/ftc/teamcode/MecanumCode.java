@@ -65,6 +65,8 @@ public class MecanumCode extends LinearOpMode {
     // If we use Jacob's clamp idea
     private Servo leftClamp = null;
     private Servo rightClamp = null;
+    private Servo armGear = null; // If a servo works
+    //private DcMotor armGear = null; // If we need to use a motor
 
 
 
@@ -82,6 +84,7 @@ public class MecanumCode extends LinearOpMode {
         // If we use Jacob's Clamp idea:
         leftClamp = hardwareMap.get(Servo.class, "left_clamp");
         rightClamp = hardwareMap.get(Servo.class, "right_clamp");
+        armGear = hardwareMap.get(/*DcMotor*/Servo.class, "arm_gear");
 
 
         // Sets the direction of all the motors and servos
@@ -93,19 +96,21 @@ public class MecanumCode extends LinearOpMode {
         // If we use Jacob's clamp idea:
         leftClamp.setDirection(Servo.Direction.REVERSE);
         rightClamp.setDirection(Servo.Direction.FORWARD);
-
+        armGear.setDirection(/*DcMotor*/Servo.Direction.FORWARD);
 
         leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         flyWheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //armGear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         flyWheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //armGear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         // Wait for the game to start (driver presses PLAY)
@@ -123,6 +128,8 @@ public class MecanumCode extends LinearOpMode {
             double flyWheelPower;
             // If we use Jacob's clamp idea:
             double clampPosition;
+            double gearPosition;
+            //double gearPower;
 
             // Defines the variables for the parabolic drive
             double curve = 0.33;
@@ -195,7 +202,16 @@ public class MecanumCode extends LinearOpMode {
                 clampPosition = 0;
             }
 
-
+            if (gamepad2.dpad_up) {
+                gearPosition = 1;
+                //gearPower = 1;
+            } else if (gamepad2.dpad_down) {
+                gearPosition = -1;
+                //gearPower = -1;
+            } else {
+                gearPosition = 0;
+                //gearPower = 0;
+            }
 
             // Sets the power of the motors and servos
             leftFront.setPower(leftFrontPower);
@@ -205,13 +221,14 @@ public class MecanumCode extends LinearOpMode {
             flyWheel.setPower(flyWheelPower);
             leftClamp.setPosition(clampPosition);
             rightClamp.setPosition(clampPosition);
+            armGear.setPosition(gearPosition);
+            //armGear.setPower(gearPower);
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Motors", "left rear (%.2f), right rear (%.2f), left front (%.2f), right front (%.2f)"
                     , leftRearPower, rightRearPower, leftFrontPower, rightFrontPower);
-            telemetry.addData("Motors", "fly wheel (%.2f), Clamp (%.2f)"
-                    , flyWheelPower, clampPosition);
+            telemetry.addData("Motors", "fly wheel (%.2f), Clamp (%.2f)", flyWheelPower, clampPosition);
             telemetry.update();
         }
     }
