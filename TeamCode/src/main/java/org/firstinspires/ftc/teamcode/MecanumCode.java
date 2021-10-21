@@ -51,7 +51,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Basic: Linear OpMode", group="Linear Opmode")
+@TeleOp(name="Mecanum Code", group="Linear Opmode")
 @Disabled
 public class MecanumCode extends LinearOpMode {
 
@@ -61,13 +61,10 @@ public class MecanumCode extends LinearOpMode {
     private DcMotor rightFront = null;
     private DcMotor rightRear = null;
     private DcMotor leftFront = null;
-    private DcMotor rightFlyWheel = null;
-    private DcMotor leftFlyWheel = null;
-    private DcMotor intakeMotor = null;
-    private DcMotor conveyorMotor = null;
-    private Servo push = null;
-    public double powerLevel = 0;
-//    private Servo arm = null;
+    private DcMotor flyWheel = null;
+    // If we use Jacob's clamp idea
+    private Servo leftClamp = null;
+    private Servo rightClamp = null;
 
 
 
@@ -81,44 +78,34 @@ public class MecanumCode extends LinearOpMode {
         rightFront = hardwareMap.get(DcMotor.class, "right_front");
         rightRear = hardwareMap.get(DcMotor.class, "right_rear");
         leftFront = hardwareMap.get(DcMotor.class, "left_front");
-        rightFlyWheel = hardwareMap.get(DcMotor.class, "right_fly_wheel");
-        leftFlyWheel = hardwareMap.get(DcMotor.class, "left_fly_wheel");
-        intakeMotor = hardwareMap.get(DcMotor.class, "intake");
-        conveyorMotor = hardwareMap.get(DcMotor.class, "conveyor");
-        push = hardwareMap.get(Servo.class, "pusher");
-//        arm = hardwareMap.get(Servo.class, "arm");
+        flyWheel = hardwareMap.get(DcMotor.class, "fly_wheel");
+        // If we use Jacob's Clamp idea:
+        leftClamp = hardwareMap.get(Servo.class, "left_clamp");
+        rightClamp = hardwareMap.get(Servo.class, "right_clamp");
 
 
         // Sets the direction of all the motors and servos
-        leftRear.setDirection(DcMotor.Direction.FORWARD);
-        rightFront.setDirection(DcMotor.Direction.REVERSE);
-        rightRear.setDirection(DcMotor.Direction.FORWARD);
-        leftFront.setDirection(DcMotor.Direction.REVERSE);
-        rightFlyWheel.setDirection(DcMotor.Direction.FORWARD);
-        leftFlyWheel.setDirection(DcMotor.Direction.REVERSE);
-        intakeMotor.setDirection(DcMotor.Direction.FORWARD);
-        conveyorMotor.setDirection(DcMotor.Direction.REVERSE);
-        push.setDirection(Servo.Direction.REVERSE);
-//        arm.setDirection(Servo.Direction.FORWARD);
+        leftRear.setDirection(DcMotor.Direction.REVERSE); // Was FORWARD
+        rightFront.setDirection(DcMotor.Direction.FORWARD); // Was REVERSE
+        rightRear.setDirection(DcMotor.Direction.REVERSE); // Was FORWARD
+        leftFront.setDirection(DcMotor.Direction.FORWARD); // Was REVERSE
+        flyWheel.setDirection(DcMotor.Direction.FORWARD);
+        // If we use Jacob's clamp idea:
+        leftClamp.setDirection(Servo.Direction.REVERSE);
+        rightClamp.setDirection(Servo.Direction.FORWARD);
 
 
         leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rightFlyWheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftFlyWheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        intakeMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        conveyorMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        flyWheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        rightFlyWheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        leftFlyWheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        intakeMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        conveyorMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        flyWheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         // Wait for the game to start (driver presses PLAY)
@@ -133,12 +120,9 @@ public class MecanumCode extends LinearOpMode {
             double rightFrontPower;
             double rightRearPower;
             double leftFrontPower;
-            double rightFlyWheelPower;
-            double leftFlyWheelPower;
-            double intakeMotorPower;
-            double conveyorMotorPower;
-            double pushPosition;
-//            double armPosition;
+            double flyWheelPower;
+            // If we use Jacob's clamp idea:
+            double clampPosition;
 
             // Defines the variables for the parabolic drive
             double curve = 0.33;
@@ -193,53 +177,22 @@ public class MecanumCode extends LinearOpMode {
                 rightFrontPower = Range.clip(strafe - drive - turn, -1.0, 1.0);
             }
 
-            // Arm code, tests if the right bumper is pressed or not and then moves the arm accordingly
-//            if (gamepad2.right_bumper) {
-//                armPosition = 1;
-//            } else {
-//                armPosition = 0;
-//            }
 
-            // Intake System code, tests if the left trigger is pressed or if the down dpad is pressed
-            // and then either moves the intake system forwards or backwards
-            if (gamepad2.left_trigger != 0) {
-                intakeMotorPower = 0.75;
-                conveyorMotorPower = 1;
-            } else if (gamepad2.y) {
-                intakeMotorPower = -0.75;
-                conveyorMotorPower = -1;
-            } else {
-                intakeMotorPower = 0;
-                conveyorMotorPower = 0;
-            }
-
-            // Fly wheel code, sets the value of the fly wheels according to the button pressed
-            //note: ring flies more level when the flywheels spin at different powers.
-            //note: a difference of 1.5 seems to work well
-
-            if (gamepad2.a) {
-                rightFlyWheelPower = 0.325;
-                leftFlyWheelPower = 0.425;
-            }
-            else if (gamepad2.b) {
-                rightFlyWheelPower = 0.25;
-                leftFlyWheelPower = 0.35;
-            }
-            else if (gamepad2.y) {
-                rightFlyWheelPower = -0.5;
-                leftFlyWheelPower = -0.5;
+            // Fly wheel code, sets the value of the fly wheel according to the button pressed
+            if (gamepad2.right_trigger != 0) {
+                flyWheelPower = 1;
             }
             else {
-                rightFlyWheelPower = 0;
-                leftFlyWheelPower = 0;
+                flyWheelPower = 0;
             }
 
 
-            // Pusher code, tests left bumper to see if the pusher should move or not
-            if (gamepad2.left_bumper) {
-                pushPosition = 1;
+            if (gamepad2.dpad_right) {
+                clampPosition = 1;
+            } else if (gamepad2.dpad_left) {
+                clampPosition = -1;
             } else {
-                pushPosition = 0;
+                clampPosition = 0;
             }
 
 
@@ -249,19 +202,16 @@ public class MecanumCode extends LinearOpMode {
             leftRear.setPower(leftRearPower);
             rightFront.setPower(rightFrontPower);
             rightRear.setPower(rightRearPower);
-            rightFlyWheel.setPower(rightFlyWheelPower);
-            leftFlyWheel.setPower(leftFlyWheelPower);
-            intakeMotor.setPower(intakeMotorPower);
-            conveyorMotor.setPower(conveyorMotorPower);
-            push.setPosition(pushPosition);
-//            arm.setPosition(armPosition);
+            flyWheel.setPower(flyWheelPower);
+            leftClamp.setPosition(clampPosition);
+            rightClamp.setPosition(clampPosition);
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Motors", "left rear (%.2f), right rear (%.2f), left front (%.2f), right front (%.2f)"
                     , leftRearPower, rightRearPower, leftFrontPower, rightFrontPower);
-            telemetry.addData("Motors", "right fly wheel (%.2f), left fly wheel (%.2f), intake (%.2f), conveyor belt (%.2f), pusher (%.2f)"/*, arm (%.2f)"*/
-                    , rightFlyWheelPower, leftFlyWheelPower, intakeMotorPower, conveyorMotorPower, pushPosition/*, armPower*/);
+            telemetry.addData("Motors", "fly wheel (%.2f), Clamp (%.2f)"
+                    , flyWheelPower, clampPosition);
             telemetry.update();
         }
     }
