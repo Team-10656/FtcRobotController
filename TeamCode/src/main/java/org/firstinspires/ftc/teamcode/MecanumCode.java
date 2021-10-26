@@ -227,6 +227,7 @@ public class MecanumCode extends LinearOpMode {
                 flyWheelPower = 0;
             }
 
+            // If we use Jacob's clamp idea:
 /*
             if (gamepad2.dpad_right) {
                 clampPosition = 1;
@@ -248,6 +249,7 @@ public class MecanumCode extends LinearOpMode {
             }
  */
 
+            //If we use Josh's claw idea
 /*
             if (gamepad2.dpad_right) {
                 clawPosition = 1;
