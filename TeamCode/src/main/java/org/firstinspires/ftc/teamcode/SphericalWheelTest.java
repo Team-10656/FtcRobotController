@@ -83,9 +83,73 @@ public class SphericalWheelTest extends LinearOpMode {
             double onePower;
             double twoPower;
             double threePower;
+            // These variables below are all the variables I believe to be relevant - Jacob
+            // All the variables below were type int
+            // May be buttons?
+            double RLR = 0;
+            double RFB = 0;
+            double RT = 0;
+            double LLR = 0;
+            double LFB = 0;
+            double LT = 0;
+            // Should be directions?
+            double forwards;
+            double backwards;
+            double left;
+            double right;
+            double CW;
+            double CCW;
+            // May be temp
+            double A2output;
+            double A3output;
+            double A4output;
+            double A5output;
+            double A10output;
+            double A11output;
 
             //Majority of Spherical Code here: https://github.com/XRobots/BallWheels/tree/main/Code/BallWheels02
             //Explanation of how it moves at 6:08: https://www.youtube.com/watch?v=zKLMCO0-How
+
+            // This code is the code I believe to be relevant, still has to be edited - Jacob
+            if (RFB >= 1) {
+                forwards = RFB;
+            }
+            else if (RFB <= -1) {
+                backwards = Math.abs(RFB);
+            }
+            else {
+                forwards = 0;
+                backwards = 0;
+            }
+
+            if (RLR >= 1) {
+                right = RLR;
+            }
+            else if (RLR <= -1) {
+                left = Math.abs(RLR);
+            }
+            else {
+                left = 0;
+                right = 0;
+            }
+
+            if (LT >= 1) {
+                CW = LT;
+            }
+            else if (LT <=-1) {
+                CCW = Math.abs(LT);
+            }
+            else {
+                CW = 0;
+                CCW = 0;
+            }
+
+            A2output = backwards + (left*0.5) + CCW;
+            A3output = forwards + (right*0.5) + CW;
+            A4output = backwards + (right*0.5) + CW;
+            A5output = forwards + (left*0.5) + CCW;
+            A10output = right + CCW;
+            A11output = left + CW;
 
             // Send calculated power to wheels
             motorOne.setPower(onePower);
