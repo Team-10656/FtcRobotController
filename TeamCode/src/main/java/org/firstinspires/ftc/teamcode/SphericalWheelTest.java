@@ -85,6 +85,7 @@ public class SphericalWheelTest extends LinearOpMode {
             double threePower;
 
             //Majority of Spherical Code here: https://github.com/XRobots/BallWheels/tree/main/Code/BallWheels02
+            //Explanation of how it moves at 6:08: https://www.youtube.com/watch?v=zKLMCO0-How
 
             // Send calculated power to wheels
             motorOne.setPower(onePower);
