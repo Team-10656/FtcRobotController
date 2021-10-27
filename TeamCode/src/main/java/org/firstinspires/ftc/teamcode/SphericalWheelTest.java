@@ -143,7 +143,7 @@ public class SphericalWheelTest extends LinearOpMode {
                 CW = 0;
                 CCW = 0;
             }
-
+// this is for the previous commit
             A2output = backwards + (left*0.5) + CCW;
             A3output = forwards + (right*0.5) + CW;
             A4output = backwards + (right*0.5) + CW;
