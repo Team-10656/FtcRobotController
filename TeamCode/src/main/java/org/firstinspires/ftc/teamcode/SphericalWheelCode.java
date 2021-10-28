@@ -41,7 +41,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * This will eventually be test code for Spherical Wheel Driving.
  */
 
-@TeleOp(name="Basic: Linear OpMode", group="Linear Opmode")
+@TeleOp(name="Spherical Code", group="Linear Opmode")
 @Disabled
 public class SphericalWheelCode extends LinearOpMode {
 

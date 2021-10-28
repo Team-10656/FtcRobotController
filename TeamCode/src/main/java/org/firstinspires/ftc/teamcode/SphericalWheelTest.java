@@ -42,7 +42,7 @@ import com.qualcomm.robotcore.util.Range;
  * This will eventually be test code for Spherical Wheel Driving.
  */
 
-@TeleOp(name="Basic: Linear OpMode", group="Linear Opmode")
+@TeleOp(name="Spherical Wheel Test", group="Linear Opmode")
 @Disabled
 public class SphericalWheelTest extends LinearOpMode {
 
