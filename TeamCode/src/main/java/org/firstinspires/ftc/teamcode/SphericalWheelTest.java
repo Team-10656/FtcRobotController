@@ -86,6 +86,7 @@ public class SphericalWheelTest extends LinearOpMode {
             // These variables below are all the variables I believe to be relevant - Jacob
             // All the variables below were type int
             // May be buttons?
+            // I think they are actually gamepad1.left/right_stick_x/y
             double RLR = 0;
             double RFB = 0;
             double RT = 0;
@@ -100,6 +101,7 @@ public class SphericalWheelTest extends LinearOpMode {
             double CW;
             double CCW;
             // May be temp
+            // I believe they are the outputs sent to the motors to decide direction -Jacob
             double A2output;
             double A3output;
             double A4output;
@@ -110,40 +112,40 @@ public class SphericalWheelTest extends LinearOpMode {
             //Majority of Spherical Code here: https://github.com/XRobots/BallWheels/tree/main/Code/BallWheels02
             //Explanation of how it moves at 6:08: https://www.youtube.com/watch?v=zKLMCO0-How
 
-            // This code is the code I believe to be relevant, still has to be edited - Jacob
-            if (RFB >= 1) {
-                forwards = RFB;
+            // This code is the code I believe to be relevant, still editing -Jacob
+            if (gamepad1.right_stick_y >= 0) {
+                forwards = gamepad1.right_stick_y;
             }
-            else if (RFB <= -1) {
-                backwards = Math.abs(RFB);
+            else if (gamepad1.right_stick_y <= 0) {
+                backwards = Math.abs(gamepad1.right_stick_y);
             }
             else {
                 forwards = 0;
                 backwards = 0;
             }
 
-            if (RLR >= 1) {
-                right = RLR;
+            if (gamepad1.right_stick_x >= 0) {
+                right = gamepad1.right_stick_x;
             }
-            else if (RLR <= -1) {
-                left = Math.abs(RLR);
+            else if (gamepad1.right_stick_x <= 0) {
+                left = Math.abs(gamepad1.right_stick_x);
             }
             else {
                 left = 0;
                 right = 0;
             }
 
-            if (LT >= 1) {
-                CW = LT;
+            if (gamepad1.left_stick_x >= 0) {
+                CW = gamepad1.left_stick_x;
             }
-            else if (LT <=-1) {
-                CCW = Math.abs(LT);
+            else if (gamepad1.left_stick_x <= 0) {
+                CCW = Math.abs(gamepad1.left_stick_x);
             }
             else {
                 CW = 0;
                 CCW = 0;
             }
-// this is for the previous commit
+
             A2output = backwards + (left*0.5) + CCW;
             A3output = forwards + (right*0.5) + CW;
             A4output = backwards + (right*0.5) + CW;
