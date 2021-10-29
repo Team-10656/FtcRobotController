@@ -40,6 +40,8 @@ import com.qualcomm.robotcore.util.Range;
 
 /**
  * This will eventually be test code for Spherical Wheel Driving.
+ * Majority of Spherical Code here in C++: https://github.com/XRobots/BallWheels/tree/main/Code/BallWheels02
+ * Explanation of how it moves at 6:08: https://www.youtube.com/watch?v=zKLMCO0-How
  */
 
 @TeleOp(name="Spherical Wheel Test", group="Linear Opmode")
@@ -85,14 +87,6 @@ public class SphericalWheelTest extends LinearOpMode {
             double threePower;
             // These variables below are all the variables I believe to be relevant - Jacob
             // All the variables below were type int
-            // May be buttons?
-            // I think they are actually gamepad1.left/right_stick_x/y
-            double RLR = 0;
-            double RFB = 0;
-            double RT = 0;
-            double LLR = 0;
-            double LFB = 0;
-            double LT = 0;
             // Should be directions?
             double forwards;
             double backwards;
@@ -103,57 +97,67 @@ public class SphericalWheelTest extends LinearOpMode {
             double CCW;
             // May be temp
             // I believe they are the outputs sent to the motors to decide direction -Jacob
-            double A2output;
-            double A3output;
-            double A4output;
-            double A5output;
-            double A10output;
-            double A11output;
+            // Each motor has two of the outputs -Jacob
+            double mOneOutput1;
+            double mOneOutput2;
+            double mTwoOutput1;
+            double mTwoOutput2;
+            double mThreeOutput1;
+            double mThreeOutput2;
 
-            //Majority of Spherical Code here: https://github.com/XRobots/BallWheels/tree/main/Code/BallWheels02
-            //Explanation of how it moves at 6:08: https://www.youtube.com/watch?v=zKLMCO0-How
 
-            // This code is the code I believe to be relevant, still editing -Jacob
             if (gamepad1.right_stick_y >= 0) {
-                forwards = gamepad1.right_stick_y;
-            }
-            else if (gamepad1.right_stick_y <= 0) {
-                backwards = Math.abs(gamepad1.right_stick_y);
-            }
-            else {
+                forwards = gamepad1.right_stick_y * 10;
+
+            } else if (gamepad1.right_stick_y <= 0) {
+                backwards = Math.abs(gamepad1.right_stick_y) * 10;
+
+            } else {
                 forwards = 0;
                 backwards = 0;
             }
 
             if (gamepad1.right_stick_x >= 0) {
-                right = gamepad1.right_stick_x;
-            }
-            else if (gamepad1.right_stick_x <= 0) {
-                left = Math.abs(gamepad1.right_stick_x);
-            }
-            else {
+                right = gamepad1.right_stick_x * 10;
+
+            } else if (gamepad1.right_stick_x <= 0) {
+                left = Math.abs(gamepad1.right_stick_x) * 10;
+
+            } else {
                 left = 0;
                 right = 0;
             }
 
             if (gamepad1.left_stick_x >= 0) {
-                CW = gamepad1.left_stick_x;
-            }
-            else if (gamepad1.left_stick_x <= 0) {
-                CCW = Math.abs(gamepad1.left_stick_x);
-            }
-            else {
+                CW = gamepad1.left_stick_x * 10;
+
+            } else if (gamepad1.left_stick_x <= 0) {
+                CCW = Math.abs(gamepad1.left_stick_x) * 10;
+
+            } else {
                 CW = 0;
                 CCW = 0;
             }
 
-            A2output = backwards + (left*0.5) + CCW;
-            A3output = forwards + (right*0.5) + CW;
-            A4output = backwards + (right*0.5) + CW;
-            A5output = forwards + (left*0.5) + CCW;
-            A10output = right + CCW;
-            A11output = left + CW;
+            // Motor One
+            mOneOutput1 = backwards + (left * 0.5) + CCW;
+            mOneOutput2 = forwards + (right * 0.5) + CW;
+            // Motor Two
+            mTwoOutput1 = backwards + (right * 0.5) + CW;
+            mTwoOutput2 = forwards + (left * 0.5) + CCW;
+            // Motor Three
+            mThreeOutput1 = right + CCW;
+            mThreeOutput2 = left + CW;
 
+            if (gamepad1.left_trigger != 0) {
+                onePower = (mOneOutput1 / 20) + (mOneOutput2 / 20);
+                twoPower = (mTwoOutput1 / 20) + (mTwoOutput2 / 20);
+                threePower = (mThreeOutput1 / 20) + (mThreeOutput2 / 20);
+            } else {
+                onePower = (mOneOutput1 / 10) + (mOneOutput2 / 10);
+                twoPower = (mTwoOutput1 / 10) + (mTwoOutput2 / 10);
+                threePower = (mThreeOutput1 / 10) + (mThreeOutput2 / 10);
+            }
             // Send calculated power to wheels
             motorOne.setPower(onePower);
             motorTwo.setPower(twoPower);
