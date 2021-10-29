@@ -39,6 +39,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
  * This will eventually be test code for Spherical Wheel Driving.
+ * Majority of Spherical Code here in C++: https://github.com/XRobots/BallWheels/tree/main/Code/BallWheels02
+ * Explanation of how it moves at 6:08: https://www.youtube.com/watch?v=zKLMCO0-How
  */
 
 @TeleOp(name="Spherical Code", group="Linear Opmode")
@@ -150,8 +152,6 @@ public class SphericalWheelCode extends LinearOpMode {
             double armPower
             //double armPosition
              */
-
-            //Majority of Spherical Code here: https://github.com/XRobots/BallWheels/tree/main/Code/BallWheels02
 
 
             // Fly wheel code, sets the value of the fly wheel according to the button pressed
