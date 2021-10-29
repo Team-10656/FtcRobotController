@@ -139,6 +139,7 @@ public class SphericalWheelTest extends LinearOpMode {
                 CCW = 0;
             }
 
+            // The errors here are wrong, the code should work but the IDE doesn't register that -Jacob
             // Motor One
             mOneOutput1 = backwards + (left * 0.5) + CCW;
             mOneOutput2 = forwards + (right * 0.5) + CW;
