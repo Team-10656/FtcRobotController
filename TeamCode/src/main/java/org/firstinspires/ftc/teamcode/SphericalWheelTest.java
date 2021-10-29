@@ -98,6 +98,7 @@ public class SphericalWheelTest extends LinearOpMode {
             double backwards;
             double left;
             double right;
+            // CW stands for Clock-Wise and CCW stands for Counter-Clock-Wise
             double CW;
             double CCW;
             // May be temp
