@@ -108,7 +108,7 @@ public class MecanumCode extends LinearOpMode {
         leftRear.setDirection(DcMotor.Direction.FORWARD); // Was FORWARD
         rightFront.setDirection(DcMotor.Direction.REVERSE); // Was REVERSE
         rightRear.setDirection(DcMotor.Direction.FORWARD); // Was FORWARD
-        leftFront.setDirection(DcMotor.Direction.FORWARD); // Was REVERSE
+        leftFront.setDirection(DcMotor.Direction.REVERSE); // Was REVERSE
         flywheel.setDirection(DcMotor.Direction.FORWARD);
         // If we use Jacob's clamp idea:
         /*
