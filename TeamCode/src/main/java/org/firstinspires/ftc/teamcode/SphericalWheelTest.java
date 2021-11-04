@@ -141,32 +141,32 @@ public class SphericalWheelTest extends LinearOpMode {
 
             // The errors here are wrong, the code should work but the IDE doesn't register that -Jacob
             // Motor One
-            mOneOutput1 = backwards + (left * 0.5) + CCW;
-            mOneOutput2 = forwards + (right * 0.5) + CW;
+//            mOneOutput1 = backwards + (left * 0.5) + CCW;
+//            mOneOutput2 = forwards + (right * 0.5) + CW;
             // Motor Two
-            mTwoOutput1 = backwards + (right * 0.5) + CW;
-            mTwoOutput2 = forwards + (left * 0.5) + CCW;
+//            mTwoOutput1 = backwards + (right * 0.5) + CW;
+//            mTwoOutput2 = forwards + (left * 0.5) + CCW;
             // Motor Three
-            mThreeOutput1 = right + CCW;
-            mThreeOutput2 = left + CW;
+//            mThreeOutput1 = right + CCW;
+//            mThreeOutput2 = left + CW;
 
             if (gamepad1.left_trigger != 0) {
-                onePower = (mOneOutput1 / 20) + (mOneOutput2 / 20);
-                twoPower = (mTwoOutput1 / 20) + (mTwoOutput2 / 20);
-                threePower = (mThreeOutput1 / 20) + (mThreeOutput2 / 20);
+//                onePower = (mOneOutput1 / 20) + (mOneOutput2 / 20);
+//                twoPower = (mTwoOutput1 / 20) + (mTwoOutput2 / 20);
+//                threePower = (mThreeOutput1 / 20) + (mThreeOutput2 / 20);
             } else {
-                onePower = (mOneOutput1 / 10) + (mOneOutput2 / 10);
-                twoPower = (mTwoOutput1 / 10) + (mTwoOutput2 / 10);
-                threePower = (mThreeOutput1 / 10) + (mThreeOutput2 / 10);
+//                onePower = (mOneOutput1 / 10) + (mOneOutput2 / 10);
+//                twoPower = (mTwoOutput1 / 10) + (mTwoOutput2 / 10);
+//                threePower = (mThreeOutput1 / 10) + (mThreeOutput2 / 10);
             }
             // Send calculated power to wheels
-            motorOne.setPower(onePower);
-            motorTwo.setPower(twoPower);
-            motorThree.setPower(threePower);
+//            motorOne.setPower(onePower);
+//            motorTwo.setPower(twoPower);
+//            motorThree.setPower(threePower);
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
-            telemetry.addData("Motors", "one (%.2f), two (%.2f), three (%.2f)", onePower, twoPower, threePower);
+//            telemetry.addData("Motors", "one (%.2f), two (%.2f), three (%.2f)", onePower, twoPower, threePower);
             telemetry.update();
         }
     }
