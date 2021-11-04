@@ -208,9 +208,9 @@ public class SphericalWheelCode extends LinearOpMode {
 
 
             // Send calculated power to wheels
-            motorOne.setPower(onePower);
-            motorTwo.setPower(twoPower);
-            motorThree.setPower(threePower);
+//            motorOne.setPower(onePower);
+//            motorTwo.setPower(twoPower);
+//            motorThree.setPower(threePower);
             flyWheel.setPower(flyWheelPower);
             /*
             leftClamp.setPosition(clampPosition);
@@ -227,7 +227,7 @@ public class SphericalWheelCode extends LinearOpMode {
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
-            telemetry.addData("Motors", "one (%.2f), two (%.2f), three (%.2f)", onePower, twoPower, threePower);
+//            telemetry.addData("Motors", "one (%.2f), two (%.2f), three (%.2f)", onePower, twoPower, threePower);
             telemetry.addData("Motors", "fly wheel (%.2f)"/*, clamp (%.2f), arm gear (%.2f)"*//*, claw (%.2f), arm (%.2f)"*/
                     , flyWheelPower/*, clampPosition, gearPosition/*, gearPower*//*clawPosition, armPower/*, armPosition*/);
             telemetry.update();
