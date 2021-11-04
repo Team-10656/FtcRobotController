@@ -61,7 +61,7 @@ public class MecanumCode extends LinearOpMode {
     private DcMotor rightFront = null;
     private DcMotor rightRear = null;
     private DcMotor leftFront = null;
-    private DcMotor flyWheel = null;
+    private DcMotor flywheel = null;
     // If we use Jacob's clamp idea
     /*
     private Servo leftClamp = null;
@@ -89,7 +89,7 @@ public class MecanumCode extends LinearOpMode {
         rightFront = hardwareMap.get(DcMotor.class, "right_front");
         rightRear = hardwareMap.get(DcMotor.class, "right_rear");
         leftFront = hardwareMap.get(DcMotor.class, "left_front");
-        flyWheel = hardwareMap.get(DcMotor.class, "fly_wheel");
+        flywheel = hardwareMap.get(DcMotor.class, "flywheel");
         // If we use Jacob's Clamp idea:
         /*
         leftClamp = hardwareMap.get(Servo.class, "left_clamp");
@@ -108,7 +108,7 @@ public class MecanumCode extends LinearOpMode {
         rightFront.setDirection(DcMotor.Direction.FORWARD); // Was REVERSE
         rightRear.setDirection(DcMotor.Direction.REVERSE); // Was FORWARD
         leftFront.setDirection(DcMotor.Direction.FORWARD); // Was REVERSE
-        flyWheel.setDirection(DcMotor.Direction.FORWARD);
+        flywheel.setDirection(DcMotor.Direction.FORWARD);
         // If we use Jacob's clamp idea:
         /*
         leftClamp.setDirection(Servo.Direction.REVERSE);
@@ -126,7 +126,7 @@ public class MecanumCode extends LinearOpMode {
         rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        flyWheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        flywheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //armGear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
@@ -134,7 +134,7 @@ public class MecanumCode extends LinearOpMode {
         rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        flyWheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        flywheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         //armGear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         //arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
@@ -277,7 +277,7 @@ public class MecanumCode extends LinearOpMode {
             leftRear.setPower(leftRearPower);
             rightFront.setPower(rightFrontPower);
             rightRear.setPower(rightRearPower);
-            flyWheel.setPower(flyWheelPower);
+            flywheel.setPower(flyWheelPower);
             /*
             leftClamp.setPosition(clampPosition);
             rightClamp.setPosition(clampPosition);
