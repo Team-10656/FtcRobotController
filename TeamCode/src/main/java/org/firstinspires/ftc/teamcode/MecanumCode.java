@@ -33,6 +33,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -104,9 +105,9 @@ public class MecanumCode extends LinearOpMode {
          */
 
         // Sets the direction of all the motors and servos
-        leftRear.setDirection(DcMotor.Direction.REVERSE); // Was FORWARD
-        rightFront.setDirection(DcMotor.Direction.FORWARD); // Was REVERSE
-        rightRear.setDirection(DcMotor.Direction.REVERSE); // Was FORWARD
+        leftRear.setDirection(DcMotor.Direction.FORWARD); // Was FORWARD
+        rightFront.setDirection(DcMotor.Direction.REVERSE); // Was REVERSE
+        rightRear.setDirection(DcMotor.Direction.FORWARD); // Was FORWARD
         leftFront.setDirection(DcMotor.Direction.FORWARD); // Was REVERSE
         flywheel.setDirection(DcMotor.Direction.FORWARD);
         // If we use Jacob's clamp idea:
