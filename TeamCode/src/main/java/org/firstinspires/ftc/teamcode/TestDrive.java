@@ -53,7 +53,7 @@ import com.qualcomm.robotcore.util.Range;
  */
 
 @TeleOp(name="Test Drive Code", group="Linear Opmode")
-@Disabled
+//@Disabled
 public class TestDrive extends LinearOpMode {
 
     // Creates all the motor and servo variables

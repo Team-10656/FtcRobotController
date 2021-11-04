@@ -52,7 +52,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 
 @TeleOp(name="Mecanum Code", group="Linear Opmode")
-@Disabled
+//@Disabled
 public class MecanumCode extends LinearOpMode {
 
     // Creates all the motor and servo variables
