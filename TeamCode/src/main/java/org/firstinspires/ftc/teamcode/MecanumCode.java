@@ -63,20 +63,9 @@ public class MecanumCode extends LinearOpMode {
     private DcMotor rightRear = null;
     private DcMotor leftFront = null;
     private DcMotor flywheel = null;
-    // If we use Jacob's clamp idea
-    /*
-    private Servo leftClamp = null;
-    private Servo rightClamp = null;
-    private Servo armGear = null; // If a servo works
-    private DcMotor armGear = null; // If we need to use a motor
-    */
-    // If we use Josh's claw idea
-    /*
     private Servo leftClaw = null;
     private Servo rightClaw = null;
     private DcMotor arm = null;
-    private Servo arm = null; // If we want to use a servo
-     */
 
 
 
@@ -91,18 +80,10 @@ public class MecanumCode extends LinearOpMode {
         rightRear = hardwareMap.get(DcMotor.class, "right_rear");
         leftFront = hardwareMap.get(DcMotor.class, "left_front");
         flywheel = hardwareMap.get(DcMotor.class, "flywheel");
-        // If we use Jacob's Clamp idea:
-        /*
-        leftClamp = hardwareMap.get(Servo.class, "left_clamp");
-        rightClamp = hardwareMap.get(Servo.class, "right_clamp");
-        armGear = hardwareMap.get(/*DcMotor*//*Servo.class, "arm_gear");
-        */
-        // If we use Josh's Claw idea:
-        /*
         leftClaw = hardwareMap.get(Servo.class, "left_claw");
-        rightClaw = hardwareMap.get(Servo.class, "right_claw);
-        arm = hardwareMap.get(/*Servo*//*DcMotor.class, "arm");
-         */
+        rightClaw = hardwareMap.get(Servo.class, "right_claw");
+        arm = hardwareMap.get(DcMotor.class, "arm");
+
 
         // Sets the direction of all the motors and servos
         leftRear.setDirection(DcMotor.Direction.FORWARD); // Was FORWARD
@@ -110,34 +91,23 @@ public class MecanumCode extends LinearOpMode {
         rightRear.setDirection(DcMotor.Direction.FORWARD); // Was FORWARD
         leftFront.setDirection(DcMotor.Direction.REVERSE); // Was REVERSE
         flywheel.setDirection(DcMotor.Direction.FORWARD);
-        // If we use Jacob's clamp idea:
-        /*
-        leftClamp.setDirection(Servo.Direction.REVERSE);
-        rightClamp.setDirection(Servo.Direction.FORWARD);
-        armGear.setDirection(/*DcMotor*//*Servo.Direction.FORWARD);
-        */
-        //If we use Josh's claw idea:
-        /*
         leftClaw.setDirection(Servo.Direction.FORWARD);
         rightClaw.setDirection(Servo.Direction.REVERSE);
-        arm.setDirection(/*Servo*//*DcMotor.Direction.FORWARD);
-         */
+        arm.setDirection(DcMotor.Direction.FORWARD);
 
         leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         flywheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //armGear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         flywheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //armGear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         // Wait for the game to start (driver presses PLAY)
@@ -153,18 +123,8 @@ public class MecanumCode extends LinearOpMode {
             double rightRearPower;
             double leftFrontPower;
             double flyWheelPower;
-            // If we use Jacob's clamp idea:
-            /*
-            double clampPosition;
-            double gearPosition;
-            //double gearPower;
-            */
-            // If we use Josh's claw idea:
-            /*
-            double clawPosition
-            double armPower
-            //double armPosition
-             */
+            double clawPosition;
+            double armPower;
 
             // Defines the variables for the parabolic drive
             double curve = 0.33;
@@ -207,11 +167,11 @@ public class MecanumCode extends LinearOpMode {
 
             // Sets the power that the motors will get and also tests to see if it should move at half speed or not
             if (drive != 0 && gamepad1.left_trigger != 0 || turn != 0 && gamepad1.left_trigger != 0 || strafe != 0 && gamepad1.left_trigger != 0) {
-                turn = gamepad1.right_stick_x / 3;
-                leftFrontPower = Range.clip(strafe + drive - turn, -0.5, 0.5);
-                leftRearPower = Range.clip(strafe - drive + turn, -0.5, 0.5);
-                rightRearPower = Range.clip(strafe + drive + turn, -0.5, 0.5);
-                rightFrontPower = Range.clip(strafe - drive - turn, -0.5, 0.5);
+                turn = gamepad1.right_stick_x / 6;
+                leftFrontPower = Range.clip(strafe + drive - turn, -0.25, 0.25);
+                leftRearPower = Range.clip(strafe - drive + turn, -0.25, 0.25);
+                rightRearPower = Range.clip(strafe + drive + turn, -0.25, 0.25);
+                rightFrontPower = Range.clip(strafe - drive - turn, -0.25, 0.25);
             } else {
                 leftFrontPower = Range.clip(strafe + drive - turn, -1.0, 1.0);
                 leftRearPower = Range.clip(strafe - drive + turn, -1.0, 1.0);
@@ -228,30 +188,7 @@ public class MecanumCode extends LinearOpMode {
                 flyWheelPower = 0;
             }
 
-            // If we use Jacob's clamp idea:
-/*
-            if (gamepad2.dpad_right) {
-                clampPosition = 1;
-            } else if (gamepad2.dpad_left) {
-                clampPosition = -1;
-            } else {
-                clampPosition = 0;
-            }
 
-            if (gamepad2.dpad_up) {
-                gearPosition = 1;
-                //gearPower = 1;
-            } else if (gamepad2.dpad_down) {
-                gearPosition = -1;
-                //gearPower = -1;
-            } else {
-                gearPosition = 0;
-                //gearPower = 0;
-            }
- */
-
-            //If we use Josh's claw idea
-/*
             if (gamepad2.dpad_right) {
                 clawPosition = 1;
             } else if (gamepad2.dpad_left) {
@@ -262,15 +199,11 @@ public class MecanumCode extends LinearOpMode {
 
             if (gamepad2.dpad_up) {
                 armPower = 1;
-                //armPosition = 1;
             } else if (gamepad2.dpad_down) {
                 armPower = -1;
-                //armPosition = -1;
             } else {
                 armPower = 0;
-                //armPosition = 0;
             }
- */
 
 
             // Sets the power of the motors and servos
@@ -279,25 +212,15 @@ public class MecanumCode extends LinearOpMode {
             rightFront.setPower(rightFrontPower);
             rightRear.setPower(rightRearPower);
             flywheel.setPower(flyWheelPower);
-            /*
-            leftClamp.setPosition(clampPosition);
-            rightClamp.setPosition(clampPosition);
-            armGear.setPosition(gearPosition);
-            //armGear.setPower(gearPower);
-            */
-            /*
             leftClaw.setPosition(clawPosition);
             rightClaw.setPosition(clawPosition);
             arm.setPower(armPower);
-            //arm.setPosition(armPosition);
-             */
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Motors", "left rear (%.2f), right rear (%.2f), left front (%.2f), right front (%.2f)"
                     , leftRearPower, rightRearPower, leftFrontPower, rightFrontPower);
-            telemetry.addData("Motors", "fly wheel (%.2f)"/*, clamp (%.2f), arm gear (%.2f)"*//*, claw (%.2f), arm (%.2f)"*/
-                    , flyWheelPower/*, clampPosition, gearPosition/*, gearPower*//*clawPosition, armPower/*, armPosition*/);
+            telemetry.addData("Motors", "fly wheel (%.2f), claw (%.2f), arm (%.2f)", flyWheelPower, clawPosition, armPower);
             telemetry.update();
         }
     }
