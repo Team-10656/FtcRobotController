@@ -39,7 +39,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="Autonomous Mode", group="Exercises")
-@Disabled
+//@Disabled
 public class MecanumAutonomous extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
     private ElapsedTime runtime = new ElapsedTime();
@@ -75,10 +75,10 @@ public class MecanumAutonomous extends LinearOpMode {
         flyWheel = hardwareMap.get(DcMotor.class, "fly_wheel");
 
         // sets the direction of the motors
-        leftRear.setDirection(DcMotor.Direction.REVERSE);
-        rightFront.setDirection(DcMotor.Direction.FORWARD);
-        rightRear.setDirection(DcMotor.Direction.REVERSE);
-        leftFront.setDirection(DcMotor.Direction.FORWARD);
+        leftRear.setDirection(DcMotor.Direction.FORWARD);
+        rightFront.setDirection(DcMotor.Direction.REVERSE);
+        rightRear.setDirection(DcMotor.Direction.FORWARD);
+        leftFront.setDirection(DcMotor.Direction.REVERSE);
         flyWheel.setDirection(DcMotor.Direction.FORWARD);
 
         // Send telemetry message to signify robot waiting
