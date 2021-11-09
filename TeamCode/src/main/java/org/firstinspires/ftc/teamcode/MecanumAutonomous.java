@@ -72,7 +72,7 @@ public class MecanumAutonomous extends LinearOpMode {
         rightFront = hardwareMap.get(DcMotor.class, "right_front");
         rightRear = hardwareMap.get(DcMotor.class, "right_rear");
         leftFront = hardwareMap.get(DcMotor.class, "left_front");
-        flyWheel = hardwareMap.get(DcMotor.class, "fly_wheel");
+        flyWheel = hardwareMap.get(DcMotor.class, "flywheel");
 
         // sets the direction of the motors
         leftRear.setDirection(DcMotor.Direction.FORWARD);
