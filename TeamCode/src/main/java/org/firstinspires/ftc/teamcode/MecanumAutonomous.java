@@ -57,8 +57,8 @@ public class MecanumAutonomous extends LinearOpMode {
     static final double DRIVE_GEAR_REDUCTION = 1.0;
     static final double WHEEL_DIAMETER_INCHES = 4.0;
     static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) / (WHEEL_DIAMETER_INCHES * 3.1415);
-    static final double DRIVE_SPEED = 0.6;
-    static final double TURN_SPEED = 0.6;
+    static final double DRIVE_SPEED = 0.01;
+    static final double TURN_SPEED = 0.01;
 
 
     // called when init button is  pressed.
@@ -110,11 +110,11 @@ public class MecanumAutonomous extends LinearOpMode {
         telemetry.update();
 
         // drives to about the blue dot on the field
-        encoderDrive(DRIVE_SPEED,  10,  10, 0.5);
+        encoderDrive(DRIVE_SPEED,  40,  40, 5.0);
 
-        encoderDrive(TURN_SPEED, 45, -45, 2.0);
+        encoderDrive(TURN_SPEED, -45, 45, 5.0);
 
-        encoderDrive(DRIVE_SPEED, 80, 80, 5.0);
+        encoderDrive(DRIVE_SPEED, 70, 70, 5.0);
 
     }
 
@@ -178,7 +178,7 @@ public class MecanumAutonomous extends LinearOpMode {
             leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-            //  sleep(250);   // optional pause after each move
+              sleep(250);   // optional pause after each move
         }
     }
 }
