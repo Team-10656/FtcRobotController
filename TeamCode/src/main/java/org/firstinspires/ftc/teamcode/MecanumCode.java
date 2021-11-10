@@ -66,6 +66,8 @@ public class MecanumCode extends LinearOpMode {
     private Servo leftClaw = null;
     private Servo rightClaw = null;
     private DcMotor arm = null;
+    static final double MAX_SPEED = 1;
+    static final double MIN_SPEED = -1;
 
 
 
