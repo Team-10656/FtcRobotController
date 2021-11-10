@@ -55,10 +55,10 @@ public class MecanumAutonomous extends LinearOpMode {
     // Sets the motor specifications as variables
     static final double COUNTS_PER_MOTOR_REV = 960;
     static final double DRIVE_GEAR_REDUCTION = 1.0;
-    static final double WHEEL_DIAMETER_INCHES = 4.0;
+    static final double WHEEL_DIAMETER_INCHES = 3.81;
     static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) / (WHEEL_DIAMETER_INCHES * 3.1415);
-    static final double DRIVE_SPEED = 0.01;
-    static final double TURN_SPEED = 0.01;
+    static final double DRIVE_SPEED = 0.6;
+    static final double TURN_SPEED = 0.6;
 
 
     // called when init button is  pressed.
@@ -77,8 +77,8 @@ public class MecanumAutonomous extends LinearOpMode {
         // sets the direction of the motors
         leftRear.setDirection(DcMotor.Direction.FORWARD);
         rightFront.setDirection(DcMotor.Direction.REVERSE);
-        rightRear.setDirection(DcMotor.Direction.FORWARD);
-        leftFront.setDirection(DcMotor.Direction.REVERSE);
+        rightRear.setDirection(DcMotor.Direction.REVERSE);
+        leftFront.setDirection(DcMotor.Direction.FORWARD);
         flyWheel.setDirection(DcMotor.Direction.FORWARD);
 
         // Send telemetry message to signify robot waiting
@@ -109,12 +109,12 @@ public class MecanumAutonomous extends LinearOpMode {
         telemetry.addData("Mode", "running");
         telemetry.update();
 
-        // drives to about the blue dot on the field
-        encoderDrive(DRIVE_SPEED,  40,  40, 5.0);
+        // drives forward a little bit, and then turns and moves to the warehouse
+        encoderDrive(DRIVE_SPEED,  20,  20, 0.18);
 
-        encoderDrive(TURN_SPEED, -45, 45, 5.0);
+        encoderDrive(TURN_SPEED, -45, 45, 0.275);
 
-        encoderDrive(DRIVE_SPEED, 70, 70, 5.0);
+        encoderDrive(DRIVE_SPEED, 70, 70, 1.25);
 
     }
 

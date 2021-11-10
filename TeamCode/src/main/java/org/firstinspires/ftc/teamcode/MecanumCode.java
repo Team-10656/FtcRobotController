@@ -168,10 +168,10 @@ public class MecanumCode extends LinearOpMode {
             // Sets the power that the motors will get and also tests to see if it should move at half speed or not
             if (drive != 0 && gamepad1.left_trigger != 0 || turn != 0 && gamepad1.left_trigger != 0 || strafe != 0 && gamepad1.left_trigger != 0) {
                 turn = gamepad1.right_stick_x / 6;
-                leftFrontPower = Range.clip(strafe + drive - turn, -0.1, 0.1);
-                leftRearPower = Range.clip(strafe - drive + turn, -0.1, 0.1);
-                rightRearPower = Range.clip(strafe + drive + turn, -0.1, 0.1);
-                rightFrontPower = Range.clip(strafe - drive - turn, -0.1, 0.1);
+                leftFrontPower = Range.clip(strafe + drive - turn, -0.125, 0.125);
+                leftRearPower = Range.clip(strafe - drive + turn, -0.125, 0.125);
+                rightRearPower = Range.clip(strafe + drive + turn, -0.125, 0.125);
+                rightFrontPower = Range.clip(strafe - drive - turn, -0.125, 0.125);
             } else {
                 leftFrontPower = Range.clip(strafe + drive - turn, -1.0, 1.0);
                 leftRearPower = Range.clip(strafe - drive + turn, -1.0, 1.0);
@@ -182,7 +182,7 @@ public class MecanumCode extends LinearOpMode {
 
             // Fly wheel code, sets the value of the fly wheel according to the button pressed
             if (gamepad2.right_trigger != 0) {
-                flyWheelPower = 1;
+                flyWheelPower = 0.25;
             }
             else {
                 flyWheelPower = 0;
