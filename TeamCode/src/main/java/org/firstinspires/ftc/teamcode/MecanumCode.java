@@ -66,8 +66,9 @@ public class MecanumCode extends LinearOpMode {
     private Servo leftClaw = null;
     private Servo rightClaw = null;
     private DcMotor arm = null;
-    static final double MAX_SPEED = 1;
-    static final double MIN_SPEED = -1;
+    static final double DEFAULT_SPEED = 0.8;
+    static final double PRECISION_SPEED = 0.1;
+    static boolean RED = false;
 
 
 
@@ -92,10 +93,10 @@ public class MecanumCode extends LinearOpMode {
         rightFront.setDirection(DcMotor.Direction.REVERSE); // Was REVERSE
         rightRear.setDirection(DcMotor.Direction.FORWARD); // Was FORWARD
         leftFront.setDirection(DcMotor.Direction.REVERSE); // Was REVERSE
-        flywheel.setDirection(DcMotor.Direction.FORWARD);
+        flywheel.setDirection(DcMotor.Direction.REVERSE);
         leftClaw.setDirection(Servo.Direction.FORWARD);
         rightClaw.setDirection(Servo.Direction.REVERSE);
-        arm.setDirection(DcMotor.Direction.REVERSE);
+        arm.setDirection(DcMotor.Direction.FORWARD);
 
         leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -140,7 +141,7 @@ public class MecanumCode extends LinearOpMode {
             // square it, and then multiply the curve by it
             if (gamepad1.left_stick_y < deadzone && gamepad1.left_stick_y > -deadzone) {
                 driveParabola = 0;
-            }  else if (gamepad1.left_stick_y < 0) {
+            } else if (gamepad1.left_stick_y < 0) {
                 driveParabola = -curve * ((gamepad1.left_stick_y * 10) * (gamepad1.left_stick_y * 10));
             } else if (gamepad1.left_stick_y > 0) {
                 driveParabola = curve * ((gamepad1.left_stick_y * 10) * (gamepad1.left_stick_y * 10));
@@ -156,7 +157,7 @@ public class MecanumCode extends LinearOpMode {
 
             if (gamepad1.right_stick_x < deadzone && gamepad1.right_stick_x > -deadzone) {
                 turnParabola = 0;
-            }  else if (gamepad1.right_stick_x < 0) {
+            } else if (gamepad1.right_stick_x < 0) {
                 turnParabola = -curve * ((gamepad1.right_stick_x * 10) * (gamepad1.right_stick_x * 10));
             } else if (gamepad1.right_stick_x > 0) {
                 turnParabola = curve * ((gamepad1.right_stick_x * 10) * (gamepad1.right_stick_x * 10));
@@ -170,23 +171,27 @@ public class MecanumCode extends LinearOpMode {
             // Sets the power that the motors will get and also tests to see if it should move at half speed or not
             if (drive != 0 && gamepad1.left_trigger != 0 || turn != 0 && gamepad1.left_trigger != 0 || strafe != 0 && gamepad1.left_trigger != 0) {
                 turn = gamepad1.right_stick_x / 6;
-                leftFrontPower = Range.clip(strafe + drive - turn, -0.125, 0.125);
-                leftRearPower = Range.clip(strafe - drive + turn, -0.125, 0.125);
-                rightRearPower = Range.clip(strafe + drive + turn, -0.125, 0.125);
-                rightFrontPower = Range.clip(strafe - drive - turn, -0.125, 0.125);
+                leftFrontPower = Range.clip(strafe + drive - turn, -PRECISION_SPEED, PRECISION_SPEED);
+                leftRearPower = Range.clip(strafe - drive + turn, -PRECISION_SPEED, PRECISION_SPEED);
+                rightRearPower = Range.clip(strafe + drive + turn, -PRECISION_SPEED, PRECISION_SPEED);
+                rightFrontPower = Range.clip(strafe - drive - turn, -PRECISION_SPEED, PRECISION_SPEED);
             } else {
-                leftFrontPower = Range.clip(strafe + drive - turn, -1.0, 1.0);
-                leftRearPower = Range.clip(strafe - drive + turn, -1.0, 1.0);
-                rightRearPower = Range.clip(strafe + drive + turn, -1.0, 1.0);
-                rightFrontPower = Range.clip(strafe - drive - turn, -1.0, 1.0);
+                leftFrontPower = Range.clip(strafe + drive - turn, -DEFAULT_SPEED, DEFAULT_SPEED);
+                leftRearPower = Range.clip(strafe - drive + turn, -DEFAULT_SPEED, DEFAULT_SPEED);
+                rightRearPower = Range.clip(strafe + drive + turn, -DEFAULT_SPEED, DEFAULT_SPEED);
+                rightFrontPower = Range.clip(strafe - drive - turn, -DEFAULT_SPEED, DEFAULT_SPEED);
             }
 
+            if (gamepad2.back && gamepad2.b) {
+                RED = true;
+            }
 
             // Fly wheel code, sets the value of the fly wheel according to the button pressed
-            if (gamepad2.right_trigger != 0) {
+            if (gamepad2.right_trigger != 0 && !RED) {
                 flyWheelPower = 0.25;
-            }
-            else {
+            } else if (gamepad2.right_trigger != 0) {
+                flyWheelPower = -0.25;
+            } else {
                 flyWheelPower = 0;
             }
 
