@@ -222,7 +222,7 @@ public class MecanumCode extends LinearOpMode {
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Motors", "left rear (%.2f), right rear (%.2f), left front (%.2f), right front (%.2f)"
                     , leftRearPower, rightRearPower, leftFrontPower, rightFrontPower);
-            telemetry.addData("Motors", "fly wheel (%.2f), claw (%.2f), arm (%.2f)", flyWheelPower, clawPosition, armPower);
+            telemetry.addData("Motors", "flywheel (%.2f), claw (%.2f), arm (%.2f)", flyWheelPower, clawPosition, armPower);
             telemetry.update();
         }
     }
