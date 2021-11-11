@@ -68,7 +68,6 @@ public class MecanumCode extends LinearOpMode {
     private DcMotor arm = null;
     static final double DEFAULT_SPEED = 0.8;
     static final double PRECISION_SPEED = 0.1;
-    static boolean RED = false;
 
 
 
@@ -182,14 +181,10 @@ public class MecanumCode extends LinearOpMode {
                 rightFrontPower = Range.clip(strafe - drive - turn, -DEFAULT_SPEED, DEFAULT_SPEED);
             }
 
-            if (gamepad2.back && gamepad2.b) {
-                RED = true;
-            }
-
             // Fly wheel code, sets the value of the fly wheel according to the button pressed
-            if (gamepad2.right_trigger != 0 && !RED) {
+            if (gamepad2.right_trigger !=0) {
                 flyWheelPower = 0.25;
-            } else if (gamepad2.right_trigger != 0) {
+            } else if (gamepad2.left_trigger != 0) {
                 flyWheelPower = -0.25;
             } else {
                 flyWheelPower = 0;
