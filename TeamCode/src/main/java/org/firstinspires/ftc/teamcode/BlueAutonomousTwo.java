@@ -29,18 +29,14 @@
 
 package org.firstinspires.ftc.teamcode;
 
-import android.util.Log;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Autonomous Mode", group="Exercises")
+@Autonomous(name="Blue Autonomous Two", group="Exercises")
 //@Disabled
-public class MecanumAutonomous extends LinearOpMode {
+public class BlueAutonomousTwo extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -85,7 +81,6 @@ public class MecanumAutonomous extends LinearOpMode {
         telemetry.addData("Status", "Resetting Encoders");
         telemetry.update();
 
-        // resets encoders (doesnt work?)
         leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -114,7 +109,7 @@ public class MecanumAutonomous extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, -45, 45, 0.275);
 
-        encoderDrive(DRIVE_SPEED, 70, 70, 1.25);
+        encoderDrive(DRIVE_SPEED, 35, 35, 0.6125);
 
     }
 

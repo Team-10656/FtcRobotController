@@ -34,9 +34,9 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Autonomous Mode", group="Exercises")
+@Autonomous(name="Red Autonomous Autonomous", group="Exercises")
 //@Disabled
-public class MecanumAutonomousRedOne extends LinearOpMode {
+public class RedAutonomousTwo extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -81,7 +81,6 @@ public class MecanumAutonomousRedOne extends LinearOpMode {
         telemetry.addData("Status", "Resetting Encoders");
         telemetry.update();
 
-        // resets encoders (doesnt work?)
         leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -110,7 +109,7 @@ public class MecanumAutonomousRedOne extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 45, -45, 0.275);
 
-        encoderDrive(DRIVE_SPEED, 70, 70, 1.25);
+        encoderDrive(DRIVE_SPEED, 35, 35, 0.6125);
 
     }
 
