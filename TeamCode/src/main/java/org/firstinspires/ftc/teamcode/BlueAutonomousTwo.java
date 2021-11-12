@@ -54,7 +54,7 @@ public class BlueAutonomousTwo extends LinearOpMode {
     static final double WHEEL_DIAMETER_INCHES = 3.81;
     static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) / (WHEEL_DIAMETER_INCHES * 3.1415);
     static final double DRIVE_SPEED = 0.6;
-    static final double TURN_SPEED = 0.6;
+    static final double TURN_SPEED = 0.5;
 
 
     // called when init button is  pressed.
@@ -108,7 +108,7 @@ public class BlueAutonomousTwo extends LinearOpMode {
         // drives forward a little bit, and then turns and moves to the warehouse
         encoderDrive(DRIVE_SPEED,  20,  20, 0.18);
 
-        encoderDrive(TURN_SPEED, -45, 45, 0.275);
+        encoderDrive(TURN_SPEED, -45, 45, 0.2375);
 
         encoderDrive(DRIVE_SPEED, 35, 35, 0.6125);
 
