@@ -119,7 +119,7 @@ public class RedAutonomousTwo extends LinearOpMode {
         telemetry.addData("Mode", "running");
         telemetry.update();
 
-        arm.setPower(.2);
+        arm.setPower(0.5);
 
         sleep(200);
         // drives forward a little bit, and then turns and moves to the warehouse
@@ -128,6 +128,7 @@ public class RedAutonomousTwo extends LinearOpMode {
         encoderDrive(TURN_SPEED, 45, -45, 0.2375);
 
         encoderDrive(DRIVE_SPEED, 35, 35, 0.6125);
+        arm.setPower(0);
 
     }
 

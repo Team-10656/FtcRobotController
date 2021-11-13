@@ -29,15 +29,12 @@
 
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.configuration.annotations.ServoType;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
-import com.qualcomm.robotcore.hardware.Servo;
 
 
 /**
@@ -53,9 +50,9 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Mecanum Code", group="Linear Opmode")
+@TeleOp(name="Mecanum Test", group="Linear Opmode")
 //@Disabled
-public class MecanumCode extends LinearOpMode {
+public class MecanumTest extends LinearOpMode {
 
     // Creates all the motor and servo variables
     private ElapsedTime runtime = new ElapsedTime();
@@ -69,6 +66,7 @@ public class MecanumCode extends LinearOpMode {
     private DcMotor arm = null;
     static final double DEFAULT_SPEED = 0.7;
     static final double PRECISION_SPEED = 0.1;
+    static final double ARM_SPEED = 0.5;
 
 
 
@@ -205,12 +203,12 @@ public class MecanumCode extends LinearOpMode {
             if (gamepad2.right_stick_y < armDeadzone && gamepad2.right_stick_y > -armDeadzone) {
                 armParabola = 0;
             } else if (gamepad2.right_stick_y < 0) {
-                armParabola = -armCurve * ((gamepad2.right_stick_y * 10) * (gamepad2.right_stick_y * 10));
+                armParabola = -armCurve * ((gamepad2.right_stick_y * 100) * (gamepad2.right_stick_y * 100));
             } else if (gamepad2.right_stick_y > 0) {
-                armParabola = armCurve * ((gamepad2.right_stick_y * 10) * (gamepad2.right_stick_y * 10));
+                armParabola = armCurve * ((gamepad2.right_stick_y * 100) * (gamepad2.right_stick_y * 100));
             }
 
-            armPower = armParabola / 10;
+            armPower = ((ARM_SPEED / 100) * armParabola) / 100;
 
 
             // Sets the power of the motors and servos
