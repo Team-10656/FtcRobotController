@@ -33,6 +33,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="Red Autonomous Autonomous", group="Exercises")
@@ -47,6 +48,9 @@ public class RedAutonomousTwo extends LinearOpMode {
     private DcMotor rightRear = null;
     private DcMotor leftFront = null;
     private DcMotor flywheel = null;
+    private Servo leftClaw = null;
+    private Servo rightClaw = null;
+    private DcMotor arm = null;
 
 
     // Sets the motor specifications as variables
@@ -70,13 +74,19 @@ public class RedAutonomousTwo extends LinearOpMode {
         rightRear = hardwareMap.get(DcMotor.class, "right_rear");
         leftFront = hardwareMap.get(DcMotor.class, "left_front");
         flywheel = hardwareMap.get(DcMotor.class, "flywheel");
+        leftClaw = hardwareMap.get(Servo.class, "left_claw");
+        rightClaw = hardwareMap.get(Servo.class, "right_claw");
+        arm = hardwareMap.get(DcMotor.class, "arm");
 
         // sets the direction of the motors
         leftRear.setDirection(DcMotor.Direction.FORWARD);
         rightFront.setDirection(DcMotor.Direction.REVERSE);
         rightRear.setDirection(DcMotor.Direction.REVERSE);
         leftFront.setDirection(DcMotor.Direction.FORWARD);
-        flywheel.setDirection(DcMotor.Direction.REVERSE);
+        flywheel.setDirection(DcMotor.Direction.FORWARD);
+        leftClaw.setDirection(Servo.Direction.FORWARD);
+        rightClaw.setDirection(Servo.Direction.REVERSE);
+        arm.setDirection(DcMotorSimple.Direction.FORWARD);
 
         // Send telemetry message to signify robot waiting
         telemetry.addData("Status", "Resetting Encoders");
@@ -87,12 +97,14 @@ public class RedAutonomousTwo extends LinearOpMode {
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         flywheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         flywheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         // Send telemetry message to indicate successful Encoder reset
         telemetry.addData("Path0",  "Starting at %7d :%7d", leftRear.getCurrentPosition()
@@ -107,6 +119,9 @@ public class RedAutonomousTwo extends LinearOpMode {
         telemetry.addData("Mode", "running");
         telemetry.update();
 
+        arm.setPower(.2);
+
+        sleep(200);
         // drives forward a little bit, and then turns and moves to the warehouse
         encoderDrive(DRIVE_SPEED,  20,  20, 0.18);
 

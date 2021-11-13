@@ -192,7 +192,7 @@ public class MecanumCode extends LinearOpMode {
             }
 
 
-            if (gamepad2.dpad_right) {
+            if (gamepad2.right_bumper) {
                 clawPosition = 1;
             } else {
                 clawPosition = 0;
