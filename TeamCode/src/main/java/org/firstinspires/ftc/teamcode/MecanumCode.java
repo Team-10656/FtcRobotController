@@ -69,7 +69,7 @@ public class MecanumCode extends LinearOpMode {
     private DcMotor arm = null;
     static final double DEFAULT_SPEED = 0.7;
     static final double PRECISION_SPEED = 0.1;
-    static final double ARM_SPEED = 0.5;
+    static final double ARM_SPEED = 0.75;
 
 
 
