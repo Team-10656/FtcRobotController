@@ -64,8 +64,9 @@ public class SinglePlayer extends LinearOpMode {
     private Servo leftClaw = null;
     private Servo rightClaw = null;
     private DcMotor arm = null;
-    static final double DEFAULT_SPEED = 0.8;
+    static final double DEFAULT_SPEED = 0.7;
     static final double PRECISION_SPEED = 0.1;
+    static final double ARM_SPEED = 0.75;
 
 
 
@@ -197,13 +198,19 @@ public class SinglePlayer extends LinearOpMode {
                 clawPosition = 0;
             }
 
-            if (gamepad1.dpad_up) {
-                armPower = 1;
-            } else if (gamepad1.dpad_down) {
-                armPower = -1;
-            } else {
-                armPower = 0;
+            double armCurve = 0.33;
+            double armDeadzone = 0;
+            double armParabola = 0;
+
+            if (gamepad2.right_stick_y < armDeadzone && gamepad2.right_stick_y > -armDeadzone) {
+                armParabola = 0;
+            } else if (gamepad2.right_stick_y < 0) {
+                armParabola = -armCurve * ((gamepad2.right_stick_y * 100) * (gamepad2.right_stick_y * 100));
+            } else if (gamepad2.right_stick_y > 0) {
+                armParabola = armCurve * ((gamepad2.right_stick_y * 100) * (gamepad2.right_stick_y * 100));
             }
+
+            armPower = ((ARM_SPEED / 100) * armParabola) / 100;
 
 
             // Sets the power of the motors and servos
