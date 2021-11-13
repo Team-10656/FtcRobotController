@@ -66,7 +66,7 @@ public class MecanumTest extends LinearOpMode {
     private DcMotor arm = null;
     static final double DEFAULT_SPEED = 0.7;
     static final double PRECISION_SPEED = 0.1;
-    static final double ARM_SPEED = 0.75;
+    static final double ARM_SPEED = 0.5;
 
 
 
@@ -162,25 +162,22 @@ public class MecanumTest extends LinearOpMode {
             }
 
             // turns the parabolic values into values the motors can use
-            double defaultDrive = ((DEFAULT_SPEED / 100) * driveParabola) / 100;
-            double defaultStrafe = ((DEFAULT_SPEED / 100) * strafeParabola) / 100;
-            double defaultTurn = ((DEFAULT_SPEED / 100) * turnParabola) / 100;
-
-            double precisionDrive = ((PRECISION_SPEED / 100) * driveParabola) / 100;
-            double precisionStrafe = ((PRECISION_SPEED / 100) * strafeParabola) / 100;
-            double precisionTurn = ((PRECISION_SPEED / 100) * turnParabola) / 100;
+            double drive = driveParabola / 100;
+            double strafe = strafeParabola / 100;
+            double turn = turnParabola / 100;
 
             // Sets the power that the motors will get and also tests to see if it should move at half speed or not
-            if (gamepad1.left_stick_y != 0 && gamepad1.left_trigger != 0 || gamepad1.right_stick_x != 0 && gamepad1.left_trigger != 0 || gamepad1.left_stick_x != 0 && gamepad1.left_trigger != 0) {
-                leftFrontPower = Range.clip(defaultStrafe + defaultDrive - defaultTurn, -PRECISION_SPEED, PRECISION_SPEED);
-                leftRearPower = Range.clip(defaultStrafe - defaultDrive + defaultTurn, -PRECISION_SPEED, PRECISION_SPEED);
-                rightRearPower = Range.clip(defaultStrafe + defaultDrive + defaultTurn, -PRECISION_SPEED, PRECISION_SPEED);
-                rightFrontPower = Range.clip(defaultStrafe - defaultDrive - defaultTurn, -PRECISION_SPEED, PRECISION_SPEED);
+            if (drive != 0 && gamepad1.left_trigger != 0 || turn != 0 && gamepad1.left_trigger != 0 || strafe != 0 && gamepad1.left_trigger != 0) {
+                turn = gamepad1.right_stick_x / 6;
+                leftFrontPower = Range.clip(strafe + drive - turn, -PRECISION_SPEED, PRECISION_SPEED);
+                leftRearPower = Range.clip(strafe - drive + turn, -PRECISION_SPEED, PRECISION_SPEED);
+                rightRearPower = Range.clip(strafe + drive + turn, -PRECISION_SPEED, PRECISION_SPEED);
+                rightFrontPower = Range.clip(strafe - drive - turn, -PRECISION_SPEED, PRECISION_SPEED);
             } else {
-                leftFrontPower = Range.clip(precisionStrafe + precisionDrive - precisionTurn, -DEFAULT_SPEED, DEFAULT_SPEED);
-                leftRearPower = Range.clip(precisionStrafe - precisionDrive + precisionTurn, -DEFAULT_SPEED, DEFAULT_SPEED);
-                rightRearPower = Range.clip(precisionStrafe + precisionDrive + precisionTurn, -DEFAULT_SPEED, DEFAULT_SPEED);
-                rightFrontPower = Range.clip(precisionStrafe - precisionDrive - precisionTurn, -DEFAULT_SPEED, DEFAULT_SPEED);
+                leftFrontPower = Range.clip(strafe + drive - turn, -DEFAULT_SPEED, DEFAULT_SPEED);
+                leftRearPower = Range.clip(strafe - drive + turn, -DEFAULT_SPEED, DEFAULT_SPEED);
+                rightRearPower = Range.clip(strafe + drive + turn, -DEFAULT_SPEED, DEFAULT_SPEED);
+                rightFrontPower = Range.clip(strafe - drive - turn, -DEFAULT_SPEED, DEFAULT_SPEED);
             }
 
             // Fly wheel code, sets the value of the fly wheel according to the button pressed
