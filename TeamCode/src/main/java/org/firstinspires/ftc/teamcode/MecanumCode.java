@@ -194,8 +194,6 @@ public class MecanumCode extends LinearOpMode {
 
             if (gamepad2.dpad_right) {
                 clawPosition = 1;
-            } else if (gamepad2.dpad_left) {
-                clawPosition = -1;
             } else {
                 clawPosition = 0;
             }
@@ -204,12 +202,12 @@ public class MecanumCode extends LinearOpMode {
             double armDeadzone = 0;
             double armParabola = 0;
 
-            if (gamepad2.left_stick_y < armDeadzone && gamepad2.left_stick_y > -armDeadzone) {
+            if (gamepad2.right_stick_y < armDeadzone && gamepad2.right_stick_y > -armDeadzone) {
                 armParabola = 0;
-            } else if (gamepad2.left_stick_y < 0) {
-                armParabola = -armCurve * ((gamepad2.left_stick_y * 10) * (gamepad2.left_stick_y * 10));
-            } else if (gamepad2.left_stick_y > 0) {
-                armParabola = armCurve * ((gamepad2.left_stick_y * 10) * (gamepad2.left_stick_y * 10));
+            } else if (gamepad2.right_stick_y < 0) {
+                armParabola = -armCurve * ((gamepad2.right_stick_y * 10) * (gamepad2.right_stick_y * 10));
+            } else if (gamepad2.right_stick_y > 0) {
+                armParabola = armCurve * ((gamepad2.right_stick_y * 10) * (gamepad2.right_stick_y * 10));
             }
 
             armPower = armParabola / 10;
