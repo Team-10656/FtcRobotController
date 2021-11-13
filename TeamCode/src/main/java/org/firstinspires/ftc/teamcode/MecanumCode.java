@@ -69,6 +69,7 @@ public class MecanumCode extends LinearOpMode {
     private DcMotor arm = null;
     static final double DEFAULT_SPEED = 0.7;
     static final double PRECISION_SPEED = 0.1;
+    static final double ARM_SPEED = 0.5;
 
 
 
@@ -205,12 +206,12 @@ public class MecanumCode extends LinearOpMode {
             if (gamepad2.right_stick_y < armDeadzone && gamepad2.right_stick_y > -armDeadzone) {
                 armParabola = 0;
             } else if (gamepad2.right_stick_y < 0) {
-                armParabola = -armCurve * ((gamepad2.right_stick_y * 10) * (gamepad2.right_stick_y * 10));
+                armParabola = -armCurve * ((gamepad2.right_stick_y * 100) * (gamepad2.right_stick_y * 100));
             } else if (gamepad2.right_stick_y > 0) {
-                armParabola = armCurve * ((gamepad2.right_stick_y * 10) * (gamepad2.right_stick_y * 10));
+                armParabola = armCurve * ((gamepad2.right_stick_y * 100) * (gamepad2.right_stick_y * 100));
             }
 
-            armPower = armParabola / 10;
+            armPower = ((ARM_SPEED / 100) * armParabola) / 100;
 
 
             // Sets the power of the motors and servos
