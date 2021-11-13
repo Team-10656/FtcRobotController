@@ -130,8 +130,8 @@ public class MecanumCode extends LinearOpMode {
             double armPower;
 
             // Defines the variables for the parabolic drive
-            double curve = 0.33;
-            double deadzone = 0;
+            double driveCurve = 0.33;
+            double driveDeadzone = 0;
             double driveParabola = 0;
             double strafeParabola = 0;
             double turnParabola = 0;
@@ -139,28 +139,28 @@ public class MecanumCode extends LinearOpMode {
             // Checks if the joystick is in the deadzone or not.
             // If its not, it will multiply the joystick position by ten,
             // square it, and then multiply the curve by it
-            if (gamepad1.left_stick_y < deadzone && gamepad1.left_stick_y > -deadzone) {
+            if (gamepad1.left_stick_y < driveDeadzone && gamepad1.left_stick_y > -driveDeadzone) {
                 driveParabola = 0;
             } else if (gamepad1.left_stick_y < 0) {
-                driveParabola = -curve * ((gamepad1.left_stick_y * 10) * (gamepad1.left_stick_y * 10));
+                driveParabola = -driveCurve * ((gamepad1.left_stick_y * 10) * (gamepad1.left_stick_y * 10));
             } else if (gamepad1.left_stick_y > 0) {
-                driveParabola = curve * ((gamepad1.left_stick_y * 10) * (gamepad1.left_stick_y * 10));
+                driveParabola = driveCurve * ((gamepad1.left_stick_y * 10) * (gamepad1.left_stick_y * 10));
             }
 
-            if (gamepad1.left_stick_x < deadzone && gamepad1.left_stick_x > -deadzone) {
+            if (gamepad1.left_stick_x < driveDeadzone && gamepad1.left_stick_x > -driveDeadzone) {
                 strafeParabola = 0;
             } else if (gamepad1.left_stick_x < 0) {
-                strafeParabola = -curve * ((gamepad1.left_stick_x * 10) * (gamepad1.left_stick_x * 10));
+                strafeParabola = -driveCurve * ((gamepad1.left_stick_x * 10) * (gamepad1.left_stick_x * 10));
             } else if (gamepad1.left_stick_x > 0) {
-                strafeParabola = curve * ((gamepad1.left_stick_x * 10) * (gamepad1.left_stick_x * 10));
+                strafeParabola = driveCurve * ((gamepad1.left_stick_x * 10) * (gamepad1.left_stick_x * 10));
             }
 
-            if (gamepad1.right_stick_x < deadzone && gamepad1.right_stick_x > -deadzone) {
+            if (gamepad1.right_stick_x < driveDeadzone && gamepad1.right_stick_x > -driveDeadzone) {
                 turnParabola = 0;
             } else if (gamepad1.right_stick_x < 0) {
-                turnParabola = -curve * ((gamepad1.right_stick_x * 10) * (gamepad1.right_stick_x * 10));
+                turnParabola = -driveCurve * ((gamepad1.right_stick_x * 10) * (gamepad1.right_stick_x * 10));
             } else if (gamepad1.right_stick_x > 0) {
-                turnParabola = curve * ((gamepad1.right_stick_x * 10) * (gamepad1.right_stick_x * 10));
+                turnParabola = driveCurve * ((gamepad1.right_stick_x * 10) * (gamepad1.right_stick_x * 10));
             }
 
             // turns the parabolic values into values the motors can use
@@ -200,13 +200,19 @@ public class MecanumCode extends LinearOpMode {
                 clawPosition = 0;
             }
 
-            if (gamepad2.dpad_up) {
-                armPower = 1;
-            } else if (gamepad2.dpad_down) {
-                armPower = -1;
-            } else {
-                armPower = 0;
+            double armCurve = 0.33;
+            double armDeadzone = 0;
+            double armParabola = 0;
+
+            if (gamepad2.left_stick_y < armDeadzone && gamepad2.left_stick_y > -armDeadzone) {
+                armParabola = 0;
+            } else if (gamepad2.left_stick_y < 0) {
+                armParabola = -armCurve * ((gamepad2.left_stick_y * 10) * (gamepad2.left_stick_y * 10));
+            } else if (gamepad2.left_stick_y > 0) {
+                armParabola = armCurve * ((gamepad2.left_stick_y * 10) * (gamepad2.left_stick_y * 10));
             }
+
+            armPower = armParabola / 10;
 
 
             // Sets the power of the motors and servos
