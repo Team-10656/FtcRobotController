@@ -86,7 +86,7 @@ public class BlueAutonomousTwo extends LinearOpMode {
         flywheel.setDirection(DcMotor.Direction.FORWARD);
         leftClaw.setDirection(Servo.Direction.FORWARD);
         rightClaw.setDirection(Servo.Direction.REVERSE);
-        arm.setDirection(DcMotorSimple.Direction.FORWARD);
+        arm.setDirection(DcMotorSimple.Direction.REVERSE);
 
         // Send telemetry message to signify robot waiting
         telemetry.addData("Status", "Resetting Encoders");
