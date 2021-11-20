@@ -121,7 +121,7 @@ public class BlueAutonomousOne extends LinearOpMode {
 
         arm.setPower(0.5);
 
-        sleep(400);
+        sleep(200);
         // drives forward a little bit, and then turns and moves to the warehouse
         encoderDrive(DRIVE_SPEED,  20,  20, 0.18);
 
