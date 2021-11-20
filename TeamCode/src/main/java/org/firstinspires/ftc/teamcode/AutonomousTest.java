@@ -59,8 +59,8 @@ public class AutonomousTest extends LinearOpMode {
     static final double DRIVE_GEAR_REDUCTION = 1.0;
     static final double WHEEL_DIAMETER_INCHES = 3.81;
     static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) / (WHEEL_DIAMETER_INCHES * 3.1415);
-    static final double DRIVE_SPEED = 0.6;
-    static final double TURN_SPEED = 0.5;
+    static final double DRIVE_SPEED = 0.4;
+    static final double TURN_SPEED = 0.2;
 
 
     // called when init button is  pressed.
@@ -120,30 +120,32 @@ public class AutonomousTest extends LinearOpMode {
         telemetry.addData("Mode", "running");
         telemetry.update();
 
-        arm.setPower(0.5);
+        arm.setPower(0.3);
 
-        sleep(400);
+        sleep(200);
 
-        encoderDrive(TURN_SPEED, -45, 45, 0.2375);
+        encoderDrive(DRIVE_SPEED, 10, 10, 0.15);
+
+        encoderDrive(TURN_SPEED, -45, 45, 0.25);
 
         encoderDrive(DRIVE_SPEED, -20, -20, 0.25);
-
-        encoderDrive(TURN_SPEED, 22.5, -22.5, 0.11875);
 
         arm.setPower(0);
         flywheel.setPower(0.25);
         sleep(2000);
         flywheel.setPower(0);
 
-        encoderDrive(TURN_SPEED, -22.5,22.5, 0.11875);
-        // drives forward a little bit, and then turns and moves to the warehouse
-        encoderDrive(DRIVE_SPEED,  20,  20, 0.18);
+        encoderDrive(DRIVE_SPEED,  20,  20, 0.25);
 
-        arm.setPower(0.5);
-        encoderDrive(DRIVE_SPEED, 35, 35, 0.625);
+        encoderDrive(TURN_SPEED, 90,-90, 0.5);
+        arm.setPower(0.3);
 
+        sleep(200);
+        encoderDrive(DRIVE_SPEED, -35, -35, 2);
+        arm.setPower(0.25);
+        sleep(100);
+        encoderDrive(DRIVE_SPEED, -35, -35, 2.5);
         arm.setPower(0);
-        encoderDrive(DRIVE_SPEED, 35, 35, 0.625);
     }
 
     public void encoderDrive(double speed, double leftInches, double rightInches, double timeoutS) {
