@@ -123,11 +123,11 @@ public class RedAutonomousOne extends LinearOpMode {
 
         sleep(200);
         // drives forward a little bit, and then turns and moves to the warehouse
-        encoderDrive(DRIVE_SPEED,  20,  20, 1.5);
+        encoderDrive(DRIVE_SPEED,  20,  20, 1.4);
         arm.setPower(0);
 
         sleep(200);
-        encoderDrive(TURN_SPEED, -45, 45, 2.25);
+        encoderDrive(TURN_SPEED, -45, 45, 2.275);
         arm.setPower(0.3);
 
         sleep(200);
