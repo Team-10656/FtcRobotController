@@ -67,8 +67,8 @@ public class MecanumCode extends LinearOpMode {
     private Servo leftClaw = null;
     private Servo rightClaw = null;
     private DcMotor arm = null;
-    static final double DEFAULT_SPEED = 0.7;
-    static final double PRECISION_SPEED = 0.1;
+    static final double DEFAULT_SPEED = 0.8;
+    static final double PRECISION_SPEED = 0.3;
     static final double ARM_SPEED = 0.75;
 
 
@@ -185,9 +185,9 @@ public class MecanumCode extends LinearOpMode {
 
             // Fly wheel code, sets the value of the fly wheel according to the button pressed
             if (gamepad2.right_trigger !=0) {
-                flyWheelPower = 0.25;
+                flyWheelPower = 1;
             } else if (gamepad2.left_trigger != 0) {
-                flyWheelPower = -0.25;
+                flyWheelPower = -1;
             } else {
                 flyWheelPower = 0;
             }
