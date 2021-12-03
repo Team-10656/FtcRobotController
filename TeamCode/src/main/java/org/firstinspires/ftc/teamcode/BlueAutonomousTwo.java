@@ -79,10 +79,10 @@ public class BlueAutonomousTwo extends LinearOpMode {
         arm = hardwareMap.get(DcMotor.class, "arm");
 
         // sets the direction of the motors
-        leftRear.setDirection(DcMotor.Direction.FORWARD);
-        rightFront.setDirection(DcMotor.Direction.REVERSE);
-        rightRear.setDirection(DcMotor.Direction.REVERSE);
-        leftFront.setDirection(DcMotor.Direction.FORWARD);
+        leftRear.setDirection(DcMotor.Direction.REVERSE);
+        rightFront.setDirection(DcMotor.Direction.FORWARD);
+        rightRear.setDirection(DcMotor.Direction.FORWARD);
+        leftFront.setDirection(DcMotor.Direction.REVERSE);
         flywheel.setDirection(DcMotor.Direction.FORWARD);
         leftClaw.setDirection(Servo.Direction.FORWARD);
         rightClaw.setDirection(Servo.Direction.REVERSE);
@@ -131,7 +131,7 @@ public class BlueAutonomousTwo extends LinearOpMode {
         arm.setPower(0.3);
 
         sleep(200);
-        encoderDrive(DRIVE_SPEED, -35, -35, 2.5);
+        encoderDrive(DRIVE_SPEED, 35, 35, 2.5);
         arm.setPower(0);
 
     }

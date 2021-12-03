@@ -127,11 +127,11 @@ public class RedAutonomousTwo extends LinearOpMode {
         arm.setPower(0);
 
         sleep(200);
-        encoderDrive(TURN_SPEED, -45, 45, 2.25);
+        encoderDrive(TURN_SPEED, 45, 45, 2.25);
         arm.setPower(0.3);
 
         sleep(200);
-        encoderDrive(DRIVE_SPEED, -35, -35, 2.5);
+        encoderDrive(DRIVE_SPEED, 35, 35, 2.5);
         arm.setPower(0);
 
     }

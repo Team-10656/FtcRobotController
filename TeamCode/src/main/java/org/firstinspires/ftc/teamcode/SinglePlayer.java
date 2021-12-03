@@ -89,10 +89,10 @@ public class SinglePlayer extends LinearOpMode {
 
 
         // Sets the direction of all the motors and servos
-        leftRear.setDirection(DcMotor.Direction.REVERSE); // Was FORWARD
-        rightFront.setDirection(DcMotor.Direction.FORWARD); // Was REVERSE
-        rightRear.setDirection(DcMotor.Direction.REVERSE); // Was FORWARD
-        leftFront.setDirection(DcMotor.Direction.FORWARD); // Was REVERSE
+        leftRear.setDirection(DcMotor.Direction.FORWARD); // Was FORWARD
+        rightFront.setDirection(DcMotor.Direction.REVERSE); // Was REVERSE
+        rightRear.setDirection(DcMotor.Direction.FORWARD); // Was FORWARD
+        leftFront.setDirection(DcMotor.Direction.REVERSE); // Was REVERSE
         flywheel.setDirection(DcMotor.Direction.REVERSE);
         leftClaw.setDirection(Servo.Direction.FORWARD);
         rightClaw.setDirection(Servo.Direction.REVERSE);

@@ -141,10 +141,10 @@ public class AutonomousTest extends LinearOpMode {
         arm.setPower(0.3);
 
         sleep(200);
-        encoderDrive(DRIVE_SPEED, -35, -35, 2);
+        encoderDrive(DRIVE_SPEED, 35, 35, 2);
         arm.setPower(0.25);
         sleep(100);
-        encoderDrive(DRIVE_SPEED, -35, -35, 2.5);
+        encoderDrive(DRIVE_SPEED, 35, 35, 2.5);
         arm.setPower(0);
     }
 
