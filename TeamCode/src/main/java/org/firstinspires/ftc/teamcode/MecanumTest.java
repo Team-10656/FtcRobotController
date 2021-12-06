@@ -52,7 +52,7 @@ import com.qualcomm.robotcore.util.Range;
  */
 
 @TeleOp(name="Mecanum Test", group="Linear Opmode")
-@Disabled
+//@Disabled
 public class MecanumTest extends LinearOpMode {
 
     // Creates all the motor and servo variables
@@ -65,9 +65,9 @@ public class MecanumTest extends LinearOpMode {
     private Servo leftClaw = null;
     private Servo rightClaw = null;
     private DcMotor arm = null;
-    static final double DEFAULT_SPEED = 0.7;
-    static final double PRECISION_SPEED = 0.1;
-    static final double ARM_SPEED = 0.5;
+    static final double DEFAULT_SPEED = 1;
+    static final double PRECISION_SPEED = 0.5;
+    static final double ARM_SPEED = 0.8;
 
 
 
@@ -149,9 +149,9 @@ public class MecanumTest extends LinearOpMode {
             if (gamepad1.left_stick_x < driveDeadzone && gamepad1.left_stick_x > -driveDeadzone) {
                 strafeParabola = 0;
             } else if (gamepad1.left_stick_x < 0) {
-                strafeParabola = driveCurve * ((gamepad1.left_stick_x * 100) * (gamepad1.left_stick_x * 100));
-            } else if (gamepad1.left_stick_x > 0) {
                 strafeParabola = -driveCurve * ((gamepad1.left_stick_x * 100) * (gamepad1.left_stick_x * 100));
+            } else if (gamepad1.left_stick_x > 0) {
+                strafeParabola = driveCurve * ((gamepad1.left_stick_x * 100) * (gamepad1.left_stick_x * 100));
             }
 
             if (gamepad1.right_stick_x < driveDeadzone && gamepad1.right_stick_x > -driveDeadzone) {
@@ -163,9 +163,13 @@ public class MecanumTest extends LinearOpMode {
             }
 
             // turns the parabolic values into values the motors can use
-            double drive = driveParabola / 100;
-            double strafe = strafeParabola / 100;
-            double turn = turnParabola / 100;
+//            double drive = driveParabola / 100;
+//            double strafe = strafeParabola / 100;
+//            double turn = turnParabola / 100;
+
+            double drive = ((DEFAULT_SPEED / 100) * driveParabola) / 100;
+            double strafe = ((DEFAULT_SPEED / 100) * strafeParabola) / 100;
+            double turn = ((DEFAULT_SPEED / 100) * turnParabola) / 100;
 
             // Sets the power that the motors will get and also tests to see if it should move at half speed or not
             if (drive != 0 && gamepad1.left_trigger != 0 || turn != 0 && gamepad1.left_trigger != 0 || strafe != 0 && gamepad1.left_trigger != 0) {
@@ -182,17 +186,17 @@ public class MecanumTest extends LinearOpMode {
             }
 
             // Fly wheel code, sets the value of the fly wheel according to the button pressed
-            if (gamepad2.right_trigger !=0) {
-                flyWheelPower = 0.25;
-            } else if (gamepad2.left_trigger != 0) {
-                flyWheelPower = -0.25;
+            if (gamepad2.right_bumper) {
+                flyWheelPower = 1;
+            } else if (gamepad2.left_bumper) {
+                flyWheelPower = -1;
             } else {
                 flyWheelPower = 0;
             }
 
 
-            if (gamepad2.right_bumper) {
-                clawPosition = 1;
+            if (gamepad2.right_trigger != 0) {
+                clawPosition = gamepad2.right_trigger;
             } else {
                 clawPosition = 0;
             }

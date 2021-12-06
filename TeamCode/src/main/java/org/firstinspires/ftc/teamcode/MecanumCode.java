@@ -69,7 +69,7 @@ public class MecanumCode extends LinearOpMode {
     private DcMotor arm = null;
     static final double DEFAULT_SPEED = 1;
     static final double PRECISION_SPEED = 0.5;
-    static final double ARM_SPEED = 0.80;
+    static final double ARM_SPEED = 0.8;
 
 
 
@@ -166,7 +166,7 @@ public class MecanumCode extends LinearOpMode {
 
             // turns the parabolic values into values the motors can use
             double drive = driveParabola / 10;
-            double strafe = -strafeParabola / 10;
+            double strafe = strafeParabola / 10;
             double turn = turnParabola / 10;
 
             // Sets the power that the motors will get and also tests to see if it should move at half speed or not
