@@ -80,10 +80,10 @@ public class AutonomousTest extends LinearOpMode {
         arm = hardwareMap.get(DcMotor.class, "arm");
 
         // sets the direction of the motors
-        leftRear.setDirection(DcMotor.Direction.FORWARD);
-        rightFront.setDirection(DcMotor.Direction.REVERSE);
-        rightRear.setDirection(DcMotor.Direction.REVERSE);
-        leftFront.setDirection(DcMotor.Direction.FORWARD);
+        leftRear.setDirection(DcMotor.Direction.REVERSE);
+        rightFront.setDirection(DcMotor.Direction.FORWARD);
+        rightRear.setDirection(DcMotor.Direction.FORWARD);
+        leftFront.setDirection(DcMotor.Direction.REVERSE);
         flywheel.setDirection(DcMotor.Direction.FORWARD);
         leftClaw.setDirection(Servo.Direction.FORWARD);
         rightClaw.setDirection(Servo.Direction.REVERSE);
@@ -124,11 +124,11 @@ public class AutonomousTest extends LinearOpMode {
 
         sleep(200);
 
-        encoderDrive(DRIVE_SPEED, 10, 10, 0.15);
+        encoderDrive(DRIVE_SPEED, 20, 20, 0.2);
 
-        encoderDrive(TURN_SPEED, -45, 45, 0.25);
+        encoderDrive(TURN_SPEED, 45, -45, 1.05);
 
-        encoderDrive(DRIVE_SPEED, -20, -20, 0.25);
+        encoderDrive(DRIVE_SPEED, 20, 20, 0.25);
 
         arm.setPower(0);
         flywheel.setPower(0.25);
