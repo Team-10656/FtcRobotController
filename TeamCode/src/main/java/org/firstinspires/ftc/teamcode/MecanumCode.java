@@ -90,10 +90,10 @@ public class MecanumCode extends LinearOpMode {
 
 
         // Sets the direction of all the motors and servos
-        leftRear.setDirection(DcMotor.Direction.FORWARD);
-        rightFront.setDirection(DcMotor.Direction.REVERSE);
-        rightRear.setDirection(DcMotor.Direction.FORWARD);
-        leftFront.setDirection(DcMotor.Direction.REVERSE);
+        leftRear.setDirection(DcMotor.Direction.REVERSE);
+        rightFront.setDirection(DcMotor.Direction.FORWARD);
+        rightRear.setDirection(DcMotor.Direction.REVERSE);
+        leftFront.setDirection(DcMotor.Direction.FORWARD);
         flywheel.setDirection(DcMotor.Direction.REVERSE);
         leftClaw.setDirection(Servo.Direction.FORWARD);
         rightClaw.setDirection(Servo.Direction.REVERSE);
@@ -166,7 +166,7 @@ public class MecanumCode extends LinearOpMode {
 
             // turns the parabolic values into values the motors can use
             double drive = driveParabola / 10;
-            double strafe = strafeParabola / 10;
+            double strafe = -strafeParabola / 10;
             double turn = turnParabola / 10;
 
             // Sets the power that the motors will get and also tests to see if it should move at half speed or not
