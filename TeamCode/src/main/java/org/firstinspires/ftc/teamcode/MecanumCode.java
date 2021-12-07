@@ -171,7 +171,7 @@ public class MecanumCode extends LinearOpMode {
 
             // Sets the power that the motors will get and also tests to see if it should move at half speed or not
             if (drive != 0 && gamepad1.left_trigger != 0 || turn != 0 && gamepad1.left_trigger != 0 || strafe != 0 && gamepad1.left_trigger != 0) {
-                turn = gamepad1.right_stick_x / 6;
+                turn = gamepad1.right_stick_x / 3;
                 leftFrontPower = Range.clip(strafe + drive - turn, -PRECISION_SPEED, PRECISION_SPEED);
                 leftRearPower = Range.clip(strafe - drive + turn, -PRECISION_SPEED, PRECISION_SPEED);
                 rightRearPower = Range.clip(strafe + drive + turn, -PRECISION_SPEED, PRECISION_SPEED);
