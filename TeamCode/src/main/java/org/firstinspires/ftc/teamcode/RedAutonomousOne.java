@@ -133,9 +133,9 @@ public class RedAutonomousOne extends LinearOpMode {
         sleep(200);
         encoderDrive(DRIVE_SPEED, 35, 35, 2);
         arm.setPower(-1);
-        sleep(300);
+        sleep(200);
         arm.setPower(0);
-        sleep(400);
+        sleep(200);
         arm.setPower(0.25);
         encoderDrive(DRIVE_SPEED, 40, 40, 3);
         arm.setPower(0);
