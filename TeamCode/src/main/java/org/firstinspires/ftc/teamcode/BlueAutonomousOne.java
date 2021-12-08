@@ -133,7 +133,7 @@ public class BlueAutonomousOne extends LinearOpMode {
         sleep(200);
         encoderDrive(DRIVE_SPEED, 35, 35, 2);
         arm.setPower(-1);
-        sleep(400);
+        sleep(300);
         arm.setPower(0);
         sleep(400);
         arm.setPower(0.25);
