@@ -34,6 +34,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.configuration.annotations.ServoType;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
@@ -67,6 +68,9 @@ public class MecanumCode extends LinearOpMode {
     private Servo leftClaw = null;
     private Servo rightClaw = null;
     private DcMotor arm = null;
+
+    DigitalChannel armTest = null;
+
     static final double DEFAULT_SPEED = 1;
     static final double PRECISION_SPEED = 0.5;
     static final double ARM_SPEED = 0.8;
@@ -87,7 +91,7 @@ public class MecanumCode extends LinearOpMode {
         leftClaw = hardwareMap.get(Servo.class, "left_claw");
         rightClaw = hardwareMap.get(Servo.class, "right_claw");
         arm = hardwareMap.get(DcMotor.class, "arm");
-
+        armTest = hardwareMap.get(DigitalChannel.class, "arm_test");
 
         // Sets the direction of all the motors and servos
         leftRear.setDirection(DcMotor.Direction.REVERSE);
@@ -98,6 +102,8 @@ public class MecanumCode extends LinearOpMode {
         leftClaw.setDirection(Servo.Direction.FORWARD);
         rightClaw.setDirection(Servo.Direction.REVERSE);
         arm.setDirection(DcMotor.Direction.FORWARD);
+
+        armTest.setMode(DigitalChannel.Mode.INPUT);
 
         leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -211,8 +217,11 @@ public class MecanumCode extends LinearOpMode {
                 armParabola = armCurve * ((gamepad2.right_stick_y * 100) * (gamepad2.right_stick_y * 100));
             }
 
-            armPower = ((ARM_SPEED / 100) * armParabola) / 100;
-
+            if (armTest.getState()) {
+                armPower = 0.1;
+            } else {
+                armPower = ((ARM_SPEED / 100) * armParabola) / 100;
+            }
 
             // Sets the power of the motors and servos
             leftFront.setPower(leftFrontPower);
