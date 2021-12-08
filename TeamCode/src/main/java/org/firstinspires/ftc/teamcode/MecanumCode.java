@@ -69,7 +69,7 @@ public class MecanumCode extends LinearOpMode {
     private Servo rightClaw = null;
     private DcMotor arm = null;
 
-    DigitalChannel armTest = null;
+//    DigitalChannel armTest;
 
     static final double DEFAULT_SPEED = 1;
     static final double PRECISION_SPEED = 0.5;
@@ -91,7 +91,7 @@ public class MecanumCode extends LinearOpMode {
         leftClaw = hardwareMap.get(Servo.class, "left_claw");
         rightClaw = hardwareMap.get(Servo.class, "right_claw");
         arm = hardwareMap.get(DcMotor.class, "arm");
-        armTest = hardwareMap.get(DigitalChannel.class, "arm_test");
+//        armTest = hardwareMap.get(DigitalChannel.class, "arm_test");
 
         // Sets the direction of all the motors and servos
         leftRear.setDirection(DcMotor.Direction.REVERSE);
@@ -103,7 +103,7 @@ public class MecanumCode extends LinearOpMode {
         rightClaw.setDirection(Servo.Direction.REVERSE);
         arm.setDirection(DcMotor.Direction.FORWARD);
 
-        armTest.setMode(DigitalChannel.Mode.INPUT);
+//        armTest.setMode(DigitalChannel.Mode.INPUT);
 
         leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -217,11 +217,13 @@ public class MecanumCode extends LinearOpMode {
                 armParabola = armCurve * ((gamepad2.right_stick_y * 100) * (gamepad2.right_stick_y * 100));
             }
 
-            if (armTest.getState()) {
-                armPower = 0.1;
-            } else {
+//            if (armTest.getState()) {
                 armPower = ((ARM_SPEED / 100) * armParabola) / 100;
-            }
+//                telemetry.addData("Digital Touch", "Is Not Pressed");
+//            } else {
+//                armPower = 0;
+//                telemetry.addData("Digital Touch", "Is Pressed");
+//            }
 
             // Sets the power of the motors and servos
             leftFront.setPower(leftFrontPower);
