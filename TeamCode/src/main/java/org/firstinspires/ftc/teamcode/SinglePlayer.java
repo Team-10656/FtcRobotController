@@ -170,7 +170,7 @@ public class SinglePlayer extends LinearOpMode {
 
             // Sets the power that the motors will get and also tests to see if it should move at half speed or not
             if (drive != 0 && gamepad1.left_trigger != 0 || turn != 0 && gamepad1.left_trigger != 0 || strafe != 0 && gamepad1.left_trigger != 0) {
-                turn = gamepad1.right_stick_x / 6;
+                turn = gamepad1.right_stick_x / 3;
                 leftFrontPower = Range.clip(strafe + drive - turn, -PRECISION_SPEED, PRECISION_SPEED);
                 leftRearPower = Range.clip(strafe - drive + turn, -PRECISION_SPEED, PRECISION_SPEED);
                 rightRearPower = Range.clip(strafe + drive + turn, -PRECISION_SPEED, PRECISION_SPEED);
@@ -183,19 +183,17 @@ public class SinglePlayer extends LinearOpMode {
             }
 
             // Fly wheel code, sets the value of the fly wheel according to the button pressed
-            if (gamepad1.right_trigger !=0) {
-                flyWheelPower = 0.25;
+            if (gamepad1.right_bumper) {
+                flyWheelPower = 1;
             } else if (gamepad1.left_bumper) {
-                flyWheelPower = -0.25;
+                flyWheelPower = -1;
             } else {
                 flyWheelPower = 0;
             }
 
 
-            if (gamepad1.dpad_right) {
-                clawPosition = 1;
-            } else if (gamepad1.dpad_left) {
-                clawPosition = -1;
+            if (gamepad1.right_trigger != 0) {
+                clawPosition = gamepad1.right_trigger;
             } else {
                 clawPosition = 0;
             }
@@ -204,12 +202,12 @@ public class SinglePlayer extends LinearOpMode {
             double armDeadzone = 0;
             double armParabola = 0;
 
-            if (gamepad2.right_stick_y < armDeadzone && gamepad2.right_stick_y > -armDeadzone) {
+            if (gamepad1.right_stick_y < armDeadzone && gamepad1.right_stick_y > -armDeadzone) {
                 armParabola = 0;
-            } else if (gamepad2.right_stick_y < 0) {
-                armParabola = -armCurve * ((gamepad2.right_stick_y * 100) * (gamepad2.right_stick_y * 100));
-            } else if (gamepad2.right_stick_y > 0) {
-                armParabola = armCurve * ((gamepad2.right_stick_y * 100) * (gamepad2.right_stick_y * 100));
+            } else if (gamepad1.right_stick_y < 0) {
+                armParabola = -armCurve * ((gamepad1.right_stick_y * 100) * (gamepad1.right_stick_y * 100));
+            } else if (gamepad1.right_stick_y > 0) {
+                armParabola = armCurve * ((gamepad1.right_stick_y * 100) * (gamepad1.right_stick_y * 100));
             }
 
             armPower = ((ARM_SPEED / 100) * armParabola) / 100;
