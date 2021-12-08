@@ -126,9 +126,9 @@ public class AutonomousTest extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED, 20, 20, 0.2);
 
-        encoderDrive(TURN_SPEED, 45, -45, 1.05);
+        encoderDrive(TURN_SPEED, -45, 45, 1.05);
 
-        encoderDrive(DRIVE_SPEED, 20, 20, 0.25);
+        encoderDrive(DRIVE_SPEED, -20, -20, 0.25);
 
         arm.setPower(0);
         flywheel.setPower(1);
