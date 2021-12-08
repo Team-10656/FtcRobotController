@@ -38,7 +38,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="Autonomous Test", group="Exercises")
-@Disabled
+//@Disabled
 public class AutonomousTest extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
     private ElapsedTime runtime = new ElapsedTime();
@@ -120,7 +120,7 @@ public class AutonomousTest extends LinearOpMode {
         telemetry.addData("Mode", "running");
         telemetry.update();
 
-        arm.setPower(0.3);
+        arm.setPower(0.2);
 
         sleep(200);
 
@@ -137,12 +137,17 @@ public class AutonomousTest extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED,  20,  20, 0.25);
 
-        encoderDrive(TURN_SPEED, 90,-90, 0.5);
-        arm.setPower(0.3);
+        encoderDrive(TURN_SPEED, 45,-45, 0.5);
+        arm.setPower(0.2);
 
         sleep(200);
+        encoderDrive(DRIVE_SPEED, 20, 20, 0.2);
+
+        encoderDrive(TURN_SPEED, -45, 45, 1.05);
+
         encoderDrive(DRIVE_SPEED, 35, 35, 2);
-        arm.setPower(0.25);
+
+        arm.setPower(0.2);
         sleep(100);
         encoderDrive(DRIVE_SPEED, 35, 35, 2.5);
         arm.setPower(0);
