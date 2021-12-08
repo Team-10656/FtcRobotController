@@ -122,7 +122,7 @@ public class WarehouseAutononmous extends LinearOpMode {
 
         sleep(200);
         // drives forward a little bit, and then turns and moves to the warehouse
-        encoderDrive(DRIVE_SPEED,  40,  40, 1.6);
+        encoderDrive(DRIVE_SPEED,  40,  40, 1.8);
         arm.setPower(0);
 
     }
