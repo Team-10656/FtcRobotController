@@ -132,7 +132,7 @@ public class BlueAutonomousTwo extends LinearOpMode {
 
         sleep(200);
         arm.setPower(0);
-        encoderDrive(DRIVE_SPEED, 45, 45, 3.25);
+        encoderDrive(DRIVE_SPEED, 60, 60, 3.5);
         arm.setPower(0);
 
     }
