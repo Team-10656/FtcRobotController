@@ -210,8 +210,13 @@ public class SinglePlayer extends LinearOpMode {
                 armParabola = armCurve * ((gamepad1.right_stick_y * 100) * (gamepad1.right_stick_y * 100));
             }
 
-            armPower = ((ARM_SPEED / 100) * armParabola) / 100;
+            armParabola = (((ARM_SPEED / 100) * armParabola) / 100);
 
+            if (armParabola > 0.01 || armParabola < -0.01) {
+                armPower = armParabola;
+            } else {
+                armPower = 0.01;
+            }
 
             // Sets the power of the motors and servos
             leftFront.setPower(leftFrontPower);

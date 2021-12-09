@@ -59,8 +59,8 @@ public class AutonomousTest extends LinearOpMode {
     static final double DRIVE_GEAR_REDUCTION = 1.0;
     static final double WHEEL_DIAMETER_INCHES = 3.81;
     static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) / (WHEEL_DIAMETER_INCHES * 3.1415);
-    static final double DRIVE_SPEED = 0.4;
-    static final double TURN_SPEED = 0.2;
+    static final double DRIVE_SPEED = 1;
+    static final double TURN_SPEED = 0.8;
 
 
     // called when init button is  pressed.
@@ -128,7 +128,9 @@ public class AutonomousTest extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, -45, 45, 1.05);
 
-        encoderDrive(DRIVE_SPEED, -20, -20, 0.25);
+        encoderDrive(DRIVE_SPEED, -20, -20, 0.5);
+
+        encoderDrive(TURN_SPEED, 45,-45, 0.5);
 
         arm.setPower(0);
         flywheel.setPower(1);
@@ -137,7 +139,7 @@ public class AutonomousTest extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED,  20,  20, 0.25);
 
-        encoderDrive(TURN_SPEED, 45,-45, 0.5);
+        encoderDrive(TURN_SPEED, 45, -45, 1.05);
         arm.setPower(0.2);
 
         sleep(200);
