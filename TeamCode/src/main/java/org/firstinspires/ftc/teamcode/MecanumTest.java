@@ -33,9 +33,12 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
+
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 
 /**
@@ -65,6 +68,9 @@ public class MecanumTest extends LinearOpMode {
     private Servo leftClaw = null;
     private Servo rightClaw = null;
     private DcMotor arm = null;
+
+//    DigitalChannel armTest;
+
     static final double DEFAULT_SPEED = 1;
     static final double PRECISION_SPEED = 0.5;
     static final double ARM_SPEED = 0.8;
@@ -85,17 +91,19 @@ public class MecanumTest extends LinearOpMode {
         leftClaw = hardwareMap.get(Servo.class, "left_claw");
         rightClaw = hardwareMap.get(Servo.class, "right_claw");
         arm = hardwareMap.get(DcMotor.class, "arm");
-
+//        armTest = hardwareMap.get(DigitalChannel.class, "arm_test");
 
         // Sets the direction of all the motors and servos
-        leftRear.setDirection(DcMotor.Direction.FORWARD);
-        rightFront.setDirection(DcMotor.Direction.REVERSE);
-        rightRear.setDirection(DcMotor.Direction.FORWARD);
-        leftFront.setDirection(DcMotor.Direction.REVERSE);
+        leftRear.setDirection(DcMotor.Direction.REVERSE);
+        rightFront.setDirection(DcMotor.Direction.FORWARD);
+        rightRear.setDirection(DcMotor.Direction.REVERSE);
+        leftFront.setDirection(DcMotor.Direction.FORWARD);
         flywheel.setDirection(DcMotor.Direction.REVERSE);
         leftClaw.setDirection(Servo.Direction.FORWARD);
         rightClaw.setDirection(Servo.Direction.REVERSE);
         arm.setDirection(DcMotor.Direction.FORWARD);
+
+//        armTest.setMode(DigitalChannel.Mode.INPUT);
 
         leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -163,17 +171,17 @@ public class MecanumTest extends LinearOpMode {
             }
 
             // turns the parabolic values into values the motors can use
-//            double drive = driveParabola / 100;
-//            double strafe = strafeParabola / 100;
-//            double turn = turnParabola / 100;
+            double drive = driveParabola / 100;
+            double strafe = -strafeParabola / 100;
+            double turn = turnParabola / 100;
 
-            double drive = ((DEFAULT_SPEED / 100) * driveParabola) / 100;
-            double strafe = ((DEFAULT_SPEED / 100) * strafeParabola) / 100;
-            double turn = ((DEFAULT_SPEED / 100) * turnParabola) / 100;
+//            double drive = ((DEFAULT_SPEED / 100) * driveParabola) / 100;
+//            double strafe = ((DEFAULT_SPEED / 100) * strafeParabola) / 100;
+//            double turn = ((DEFAULT_SPEED / 100) * turnParabola) / 100;
 
             // Sets the power that the motors will get and also tests to see if it should move at half speed or not
             if (drive != 0 && gamepad1.left_trigger != 0 || turn != 0 && gamepad1.left_trigger != 0 || strafe != 0 && gamepad1.left_trigger != 0) {
-                turn = gamepad1.right_stick_x / 6;
+                turn = gamepad1.right_stick_x / 3;
                 leftFrontPower = Range.clip(strafe + drive - turn, -PRECISION_SPEED, PRECISION_SPEED);
                 leftRearPower = Range.clip(strafe - drive + turn, -PRECISION_SPEED, PRECISION_SPEED);
                 rightRearPower = Range.clip(strafe + drive + turn, -PRECISION_SPEED, PRECISION_SPEED);
@@ -213,8 +221,18 @@ public class MecanumTest extends LinearOpMode {
                 armParabola = armCurve * ((gamepad2.right_stick_y * 100) * (gamepad2.right_stick_y * 100));
             }
 
-            armPower = ((ARM_SPEED / 100) * armParabola) / 100;
-
+            armParabola = (((ARM_SPEED / 100) * armParabola) / 100);
+//            if (armTest.getState()) {
+            if (armParabola > 0.01 || armParabola < -0.01) {
+                armPower = armParabola;
+            } else {
+                armPower = 0.01;
+            }
+//                telemetry.addData("Digital Touch", "Is Not Pressed");
+//            } else {
+//                armPower = 0;
+//                telemetry.addData("Digital Touch", "Is Pressed");
+//            }
 
             // Sets the power of the motors and servos
             leftFront.setPower(leftFrontPower);
