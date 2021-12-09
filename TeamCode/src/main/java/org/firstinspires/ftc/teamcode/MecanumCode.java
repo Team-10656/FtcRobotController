@@ -217,8 +217,13 @@ public class MecanumCode extends LinearOpMode {
                 armParabola = armCurve * ((gamepad2.right_stick_y * 100) * (gamepad2.right_stick_y * 100));
             }
 
+            armParabola = (((ARM_SPEED / 100) * armParabola) / 100);
 //            if (armTest.getState()) {
-                armPower = ((ARM_SPEED / 100) * armParabola) / 100;
+            if (armParabola > 0.01 || armParabola < -0.01) {
+                armPower = armParabola;
+            } else {
+                armPower = 0.01;
+            }
 //                telemetry.addData("Digital Touch", "Is Not Pressed");
 //            } else {
 //                armPower = 0;
