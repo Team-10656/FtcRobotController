@@ -30,16 +30,15 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Autonomous Test", group="Exercises")
+@Autonomous(name="Blue Duck Autonomous", group="Exercises")
 //@Disabled
-public class AutonomousTest extends LinearOpMode {
+public class BlueDuckAutonomous extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
     private ElapsedTime runtime = new ElapsedTime();
 
