@@ -121,7 +121,7 @@ public class BlueDuckAutonomous extends LinearOpMode {
 
         arm.setPower(0.2);
 
-        sleep(150);
+//        sleep(150);
 
         encoderDrive(DRIVE_SPEED, 20, 20, 0.2);
 
