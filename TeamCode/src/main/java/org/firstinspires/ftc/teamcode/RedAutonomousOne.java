@@ -36,7 +36,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Red Autonomous One", group="Exercises")
+@Autonomous(name="Red Autonomous One", group="Red")
 //@Disabled
 public class RedAutonomousOne extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
@@ -124,19 +124,19 @@ public class RedAutonomousOne extends LinearOpMode {
         sleep(200);
         // drives forward a little bit, and then turns and moves to the warehouse
         encoderDrive(DRIVE_SPEED,  20,  20, 0.65);
-        arm.setPower(0);
+        arm.setPower(0.01);
 
-        sleep(200);
+//        sleep(200);
         encoderDrive(TURN_SPEED, 45, -45, 1.05);
-        arm.setPower(0.25);
+//        arm.setPower(0.25);
 
-        sleep(200);
+//        sleep(200);
         encoderDrive(DRIVE_SPEED, 35, 35, 2);
-        arm.setPower(-1);
-        sleep(200);
-        arm.setPower(0);
-        sleep(250);
-        arm.setPower(0.25);
+//        arm.setPower(-1);
+//        sleep(200);
+//        arm.setPower(0);
+//        sleep(250);
+//        arm.setPower(0.25);
         encoderDrive(DRIVE_SPEED, 40, 40, 3);
         arm.setPower(0);
         encoderDrive(DRIVE_SPEED, 20, 20, 0.25);

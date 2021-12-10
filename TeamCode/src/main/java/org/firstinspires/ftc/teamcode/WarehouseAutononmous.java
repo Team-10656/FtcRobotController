@@ -36,7 +36,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Warehouse Autonomous", group="Exercises")
+@Autonomous(name="Warehouse Autonomous", group="Both")
 //@Disabled
 public class WarehouseAutononmous extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
