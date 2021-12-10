@@ -171,17 +171,16 @@ public class MecanumTest extends LinearOpMode {
             }
 
             // turns the parabolic values into values the motors can use
-            double drive = driveParabola / 100;
-            double strafe = -strafeParabola / 100;
-            double turn = turnParabola / 100;
+//            double drive = driveParabola / 100;
+//            double strafe = -strafeParabola / 100;
+//            double turn = turnParabola / 100;
 
-//            double drive = ((DEFAULT_SPEED / 100) * driveParabola) / 100;
-//            double strafe = ((DEFAULT_SPEED / 100) * strafeParabola) / 100;
-//            double turn = ((DEFAULT_SPEED / 100) * turnParabola) / 100;
+            double drive = ((DEFAULT_SPEED / 100) * driveParabola) / 100;
+            double strafe = ((DEFAULT_SPEED / 100) * strafeParabola) / 100;
+            double turn = ((DEFAULT_SPEED / 100) * turnParabola) / 100;
 
             // Sets the power that the motors will get and also tests to see if it should move at half speed or not
             if (drive != 0 && gamepad1.left_trigger != 0 || turn != 0 && gamepad1.left_trigger != 0 || strafe != 0 && gamepad1.left_trigger != 0) {
-                turn = gamepad1.right_stick_x / 3;
                 leftFrontPower = Range.clip(strafe + drive - turn, -PRECISION_SPEED, PRECISION_SPEED);
                 leftRearPower = Range.clip(strafe - drive + turn, -PRECISION_SPEED, PRECISION_SPEED);
                 rightRearPower = Range.clip(strafe + drive + turn, -PRECISION_SPEED, PRECISION_SPEED);
