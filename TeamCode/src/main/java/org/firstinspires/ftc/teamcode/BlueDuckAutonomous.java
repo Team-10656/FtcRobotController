@@ -36,7 +36,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Blue Duck Autonomous", group="Exercises")
+@Autonomous(name="Blue Duck Autonomous", group="Blue")
 //@Disabled
 public class BlueDuckAutonomous extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
@@ -121,14 +121,14 @@ public class BlueDuckAutonomous extends LinearOpMode {
 
         arm.setPower(0.2);
 
-        sleep(200);
+        sleep(150);
 
         encoderDrive(DRIVE_SPEED, 20, 20, 0.2);
 
         encoderDrive(TURN_SPEED, -45, 45, 1.05);
 
         encoderDrive(DRIVE_SPEED / 2, -20, -20, 1.85);
-        arm.setPower(0);
+        arm.setPower(0.01);
 
         encoderDrive(TURN_SPEED, 45,-45, 0.5);
 
@@ -141,17 +141,17 @@ public class BlueDuckAutonomous extends LinearOpMode {
         encoderDrive(DRIVE_SPEED,  20,  20, 0.25);
 
         encoderDrive(TURN_SPEED, -45, 45, .475);
-        arm.setPower(0.2);
+//        arm.setPower(0.2);
 
-        sleep(200);
+//        sleep(200);
         encoderDrive(DRIVE_SPEED, 20, 20, 0.2);
 
         encoderDrive(DRIVE_SPEED, 35, 35, 1.0);
 
-        arm.setPower(0);
+//        arm.setPower(0);
         encoderDrive(DRIVE_SPEED, 35, 35, 2.5);
-        arm.setPower(0.3);
-        sleep(200);
+//        arm.setPower(0.3);
+//        sleep(200);
         encoderDrive(DRIVE_SPEED, 35, 35, 2);
         arm.setPower(0);
     }
