@@ -129,11 +129,7 @@ public class BlueAutonomousOne extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, -45, 45, 1.05);
 
-        encoderDrive(DRIVE_SPEED, 35, 35, 2);
-
-        encoderDrive(DRIVE_SPEED, 40, 40, 3);
-
-        encoderDrive(DRIVE_SPEED, 20, 20, 0.25);
+        encoderDrive(DRIVE_SPEED, 95, 95, 5.25);
 
         arm.setPower(0);
     }
