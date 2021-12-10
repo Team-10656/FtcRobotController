@@ -121,7 +121,7 @@ public class RedAutonomousTwo extends LinearOpMode {
 
         arm.setPower(0.25);
 
-        sleep(200);
+        sleep(850);
 
         arm.setPower(0.01);
 
