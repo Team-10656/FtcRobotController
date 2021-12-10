@@ -118,10 +118,12 @@ public class WarehouseAutonomous extends LinearOpMode {
         telemetry.addData("Mode", "running");
         telemetry.update();
 
-        arm.setPower(0.3);
+        arm.setPower(0.25);
 
-        sleep(200);
-        // drives forward a little bit, and then turns and moves to the warehouse
+        sleep(850);
+
+        arm.setPower(0.01);
+
         encoderDrive(DRIVE_SPEED,  40,  40, 1.8);
         arm.setPower(0);
 

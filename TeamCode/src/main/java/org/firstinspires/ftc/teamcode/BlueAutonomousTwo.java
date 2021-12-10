@@ -121,20 +121,16 @@ public class BlueAutonomousTwo extends LinearOpMode {
 
         arm.setPower(0.25);
 
-        sleep(200);
-        // drives forward a little bit, and then turns and moves to the warehouse
+        sleep(850);
+
+        arm.setPower(0.01);
+
         encoderDrive(DRIVE_SPEED,  20,  20, 0.65);
-        arm.setPower(0);
 
-        sleep(200);
         encoderDrive(TURN_SPEED, -45, 45, 1.05);
-        arm.setPower(1);
 
-        sleep(300);
-        arm.setPower(0);
-        sleep(500);
-        arm.setPower(0.15);
         encoderDrive(DRIVE_SPEED, 60, 60, 3);
+
         arm.setPower(0);
 
     }
