@@ -54,9 +54,10 @@ public class BlueAutonomousOne extends LinearOpMode {
 
 
     // Sets the motor specifications as variables
-    static final double COUNTS_PER_MOTOR_REV = 960;
+    // This has the information for rev motors: https://docs.revrobotics.com/rev-control-system/sensors/encoders/motor-based-encoders
+    static final double COUNTS_PER_MOTOR_REV = 1120;
     static final double DRIVE_GEAR_REDUCTION = 1.0;
-    static final double WHEEL_DIAMETER_INCHES = 3.81;
+    static final double WHEEL_DIAMETER_INCHES = 4;
     static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) / (WHEEL_DIAMETER_INCHES * 3.1415);
     static final double DRIVE_SPEED = 1;
     static final double TURN_SPEED = 0.8;
@@ -125,11 +126,11 @@ public class BlueAutonomousOne extends LinearOpMode {
 
         arm.setPower(0.01);
 
-        encoderDrive(DRIVE_SPEED,  20,  20, 0.65);
+        encoderDrive(DRIVE_SPEED,  12,  12, 2);
 
-        encoderDrive(TURN_SPEED, -45, 45, 1.05);
+        encoderDrive(TURN_SPEED, -20, 20, 3);
 
-        encoderDrive(DRIVE_SPEED, 95, 95, 5.25);
+        encoderDrive(DRIVE_SPEED, 80, 80, 8);
 
         arm.setPower(0);
     }
