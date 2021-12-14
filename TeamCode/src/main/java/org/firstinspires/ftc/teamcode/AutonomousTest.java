@@ -123,7 +123,10 @@ public class AutonomousTest extends LinearOpMode {
         telemetry.addData("Mode", "running");
         telemetry.update();
 
-        arm.setPower(0.25);
+        leftClaw.setPosition(1);
+        rightClaw.setPosition(1);
+
+        arm.setPower(0.4);
 
         sleep(850);
 
@@ -131,9 +134,26 @@ public class AutonomousTest extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED,  12,  12, 2);
 
-        encoderDrive(TURN_SPEED, 20, -20, 3);
+        leftClaw.setPosition(0);
+        rightClaw.setPosition(0);
 
-        encoderDrive(DRIVE_SPEED, 50, 50, 5);
+        encoderDrive(TURN_SPEED, 20, -20, 2);
+
+        encoderDrive(DRIVE_SPEED / 2, -30, -30, 3);
+
+        encoderDrive(TURN_SPEED, -10,10, 1);
+
+        encoderDrive(DRIVE_SPEED / 2, -12, -12, 2);
+
+        flywheel.setPower(1);
+        sleep(2000);
+        flywheel.setPower(0);
+
+        encoderDrive(DRIVE_SPEED,  12,  12, 2);
+
+        encoderDrive(TURN_SPEED, 20, -20, 2);
+
+        encoderDrive(DRIVE_SPEED, 110, 110, 12);
 
         arm.setPower(0);
 
