@@ -53,8 +53,6 @@ public class AutonomousTest extends LinearOpMode {
     private Servo rightClaw = null;
     private DcMotor arm = null;
 
-    NormalizedColorSensor elementSensor;
-
 
     // Sets the motor specifications as variables
     // This has the information for rev motors: https://docs.revrobotics.com/rev-control-system/sensors/encoders/motor-based-encoders
