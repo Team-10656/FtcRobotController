@@ -31,15 +31,14 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Autonomous Test", group="Test")
+@Autonomous(name="Preload Autonomous Test", group="Test")
 //@Disabled
-public class AutonomousTest extends LinearOpMode {
+public class PreloadAutonomousTest extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -137,21 +136,7 @@ public class AutonomousTest extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 20, -20, 2);
 
-        encoderDrive(DRIVE_SPEED / 2, -30, -30, 3);
-
-        encoderDrive(TURN_SPEED, -10,10, 1);
-
-        encoderDrive(DRIVE_SPEED / 2, -12, -12, 2);
-
-        flywheel.setPower(1);
-        sleep(2000);
-        flywheel.setPower(0);
-
-        encoderDrive(DRIVE_SPEED,  12,  12, 2);
-
-        encoderDrive(TURN_SPEED, 20, -20, 2);
-
-        encoderDrive(DRIVE_SPEED, 110, 110, 12);
+        encoderDrive(DRIVE_SPEED, 70, 70, 8);
 
         arm.setPower(0);
 
