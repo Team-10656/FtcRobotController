@@ -227,7 +227,7 @@ public class MecanumCode extends LinearOpMode {
             if (armParabola > 0.01 || armParabola < -0.01) {
                 armPower = armParabola;
             } else {
-                armPower = -0.01;
+                armPower = -0.0005;
             }
 //                telemetry.addData("Digital Touch", "Is Not Pressed");
 //            } else {
