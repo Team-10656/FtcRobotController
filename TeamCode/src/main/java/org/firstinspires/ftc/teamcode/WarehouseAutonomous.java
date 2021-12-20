@@ -50,7 +50,8 @@ public class WarehouseAutonomous extends LinearOpMode {
     private DcMotor flywheel = null;
     private Servo leftClaw = null;
     private Servo rightClaw = null;
-    private DcMotor arm = null;
+    private DcMotor armOne = null;
+    private DcMotor armTwo = null;
 
 
     // Sets the motor specifications as variables
@@ -76,7 +77,8 @@ public class WarehouseAutonomous extends LinearOpMode {
         flywheel = hardwareMap.get(DcMotor.class, "flywheel");
         leftClaw = hardwareMap.get(Servo.class, "left_claw");
         rightClaw = hardwareMap.get(Servo.class, "right_claw");
-        arm = hardwareMap.get(DcMotor.class, "arm");
+        armOne = hardwareMap.get(DcMotor.class, "arm_one");
+        armTwo = hardwareMap.get(DcMotor.class, "arm_two");
 
         // sets the direction of the motors
         leftRear.setDirection(DcMotor.Direction.REVERSE);
@@ -86,7 +88,8 @@ public class WarehouseAutonomous extends LinearOpMode {
         flywheel.setDirection(DcMotor.Direction.FORWARD);
         leftClaw.setDirection(Servo.Direction.FORWARD);
         rightClaw.setDirection(Servo.Direction.REVERSE);
-        arm.setDirection(DcMotorSimple.Direction.REVERSE);
+        armOne.setDirection(DcMotor.Direction.REVERSE);
+        armTwo.setDirection(DcMotor.Direction.FORWARD);
 
         // Send telemetry message to signify robot waiting
         telemetry.addData("Status", "Resetting Encoders");
@@ -97,14 +100,16 @@ public class WarehouseAutonomous extends LinearOpMode {
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         flywheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        armOne.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        armTwo.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         flywheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        armOne.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        armTwo.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         // Send telemetry message to indicate successful Encoder reset
         telemetry.addData("Path0",  "Starting at %7d :%7d", leftRear.getCurrentPosition()
@@ -119,14 +124,17 @@ public class WarehouseAutonomous extends LinearOpMode {
         telemetry.addData("Mode", "running");
         telemetry.update();
 
-        arm.setPower(0.25);
+        armOne.setPower(0.25);
+        armTwo.setPower(0.25);
 
         sleep(850);
 
-        arm.setPower(0.01);
+        armOne.setPower(0.0005);
+        armTwo.setPower(0.0005);
 
         encoderDrive(DRIVE_SPEED,  40,  30, 3);
-        arm.setPower(0);
+        armOne.setPower(0);
+        armTwo.setPower(0);
 
     }
 
