@@ -136,7 +136,9 @@ public class DuckPreloadAutonomousTest extends LinearOpMode {
         armOne.setPower(0.0005);
         armTwo.setPower(0.0005);
 
-        encoderDrive(DRIVE_SPEED, 24, -24, -24,24,2);
+        encoderDrive(DRIVE_SPEED, 28, -28, -28,28,2);
+
+        encoderDrive(TURN_SPEED, 5, -5, 1);
 
         encoderDrive(DRIVE_SPEED,  14,  14, 2);
 
