@@ -133,7 +133,7 @@ public class DuckPreloadAutonomousTest extends LinearOpMode {
         armOne.setPower(0.6);
         armTwo.setPower(0.6);
 
-        sleep(900);
+        sleep(1000);
 
         armOne.setPower(0.0005);
         armTwo.setPower(0.0005);
@@ -155,7 +155,7 @@ public class DuckPreloadAutonomousTest extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, -10,10, 1);
 
-        encoderDrive(DRIVE_SPEED / 2, -18, -18, 2);
+        encoderDrive(DRIVE_SPEED / 2, -16, -16, 2);
 
         flywheel.setPower(1);
         sleep(2000);
