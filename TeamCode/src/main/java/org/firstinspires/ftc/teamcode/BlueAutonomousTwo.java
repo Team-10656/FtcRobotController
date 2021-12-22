@@ -134,7 +134,7 @@ public class BlueAutonomousTwo extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED,  12,  12, 2);
 
-        encoderDrive(TURN_SPEED, -18, 18, 3);
+        encoderDrive(TURN_SPEED, -19, 19, 3);
 
         encoderDrive(DRIVE_SPEED, 50, 50, 5);
 

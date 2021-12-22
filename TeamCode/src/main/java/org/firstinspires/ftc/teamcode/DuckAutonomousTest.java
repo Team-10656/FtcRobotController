@@ -134,13 +134,13 @@ public class DuckAutonomousTest extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED, 12, 12, 2);
 
-        encoderDrive(TURN_SPEED, 18, -18, 2);
+        encoderDrive(TURN_SPEED, 19, -19, 2);
 
         encoderDrive(DRIVE_SPEED / 2, -20, -20, 2);
 
         encoderDrive(TURN_SPEED, -10,10, 1);
 
-        encoderDrive(DRIVE_SPEED / 2, -12, -12, 2);
+        encoderDrive(DRIVE_SPEED / 2, -8, -8, 2);
 
         flywheel.setPower(1);
         sleep(2000);
@@ -148,7 +148,7 @@ public class DuckAutonomousTest extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED,  12,  12, 2);
 
-        encoderDrive(TURN_SPEED, 18, -18, 1);
+        encoderDrive(TURN_SPEED, 19, -19, 1);
 
         encoderDrive(DRIVE_SPEED, 110, 110, 12);
 
