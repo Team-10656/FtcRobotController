@@ -65,7 +65,8 @@ public class SinglePlayer extends LinearOpMode {
     private DcMotor flywheel = null;
     private Servo leftClaw = null;
     private Servo rightClaw = null;
-    private DcMotor arm = null;
+    private DcMotor armOne = null;
+    private DcMotor armTwo = null;
     static final double DEFAULT_SPEED = 1;
     static final double PRECISION_SPEED = 0.5;
     static final double ARM_SPEED = 0.8;
@@ -85,32 +86,35 @@ public class SinglePlayer extends LinearOpMode {
         flywheel = hardwareMap.get(DcMotor.class, "flywheel");
         leftClaw = hardwareMap.get(Servo.class, "left_claw");
         rightClaw = hardwareMap.get(Servo.class, "right_claw");
-        arm = hardwareMap.get(DcMotor.class, "arm");
-
+        armOne = hardwareMap.get(DcMotor.class, "arm_one");
+        armTwo = hardwareMap.get(DcMotor.class, "arm_two");
 
         // Sets the direction of all the motors and servos
-        leftRear.setDirection(DcMotor.Direction.REVERSE); // Was FORWARD
-        rightFront.setDirection(DcMotor.Direction.FORWARD); // Was REVERSE
-        rightRear.setDirection(DcMotor.Direction.REVERSE); // Was FORWARD
-        leftFront.setDirection(DcMotor.Direction.FORWARD); // Was REVERSE
+        leftRear.setDirection(DcMotor.Direction.REVERSE);
+        rightFront.setDirection(DcMotor.Direction.FORWARD);
+        rightRear.setDirection(DcMotor.Direction.REVERSE);
+        leftFront.setDirection(DcMotor.Direction.FORWARD);
         flywheel.setDirection(DcMotor.Direction.REVERSE);
         leftClaw.setDirection(Servo.Direction.FORWARD);
         rightClaw.setDirection(Servo.Direction.REVERSE);
-        arm.setDirection(DcMotor.Direction.FORWARD);
+        armOne.setDirection(DcMotor.Direction.FORWARD);
+        armTwo.setDirection(DcMotor.Direction.REVERSE);
 
         leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         flywheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        armOne.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        armTwo.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         flywheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        armOne.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        armTwo.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         // Wait for the game to start (driver presses PLAY)
@@ -215,7 +219,7 @@ public class SinglePlayer extends LinearOpMode {
             if (armParabola > 0.01 || armParabola < -0.01) {
                 armPower = armParabola;
             } else {
-                armPower = 0.01;
+                armPower = -0.0005;
             }
 
             // Sets the power of the motors and servos
@@ -226,7 +230,8 @@ public class SinglePlayer extends LinearOpMode {
             flywheel.setPower(flyWheelPower);
             leftClaw.setPosition(clawPosition);
             rightClaw.setPosition(clawPosition);
-            arm.setPower(armPower);
+            armOne.setPower(armPower);
+            armTwo.setPower(armPower);
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
