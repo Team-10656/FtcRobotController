@@ -130,7 +130,7 @@ public class PreloadAutonomousTest extends LinearOpMode {
         armOne.setPower(0.6);
         armTwo.setPower(0.6);
 
-        sleep(1000);
+        sleep(900);
 
         armOne.setPower(0.0005);
         armTwo.setPower(0.0005);
