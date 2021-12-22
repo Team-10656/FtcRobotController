@@ -127,7 +127,7 @@ public class PreloadAutonomousTest extends LinearOpMode {
         leftClaw.setPosition(0);
         rightClaw.setPosition(0);
 
-        sleep(700);
+        sleep(1000);
 
         armOne.setPower(0.6);
         armTwo.setPower(0.6);
@@ -141,7 +141,7 @@ public class PreloadAutonomousTest extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 4, -4, 1);
 
-        encoderDrive(DRIVE_SPEED,  10,  10, 2);
+        encoderDrive(DRIVE_SPEED,  12,  12, 2);
 
         leftClaw.setPosition(1);
         rightClaw.setPosition(1);
