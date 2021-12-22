@@ -141,7 +141,7 @@ public class DuckPreloadAutonomousTest extends LinearOpMode {
         leftClaw.setPosition(0);
         rightClaw.setPosition(0);
 
-        encoderDrive(TURN_SPEED, 20, -20, 2);
+        encoderDrive(TURN_SPEED, 18, -18, 2);
 
         encoderDrive(DRIVE_SPEED / 2, -30, -30, 3);
 
@@ -155,7 +155,7 @@ public class DuckPreloadAutonomousTest extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED,  12,  12, 2);
 
-        encoderDrive(TURN_SPEED, 20, -20, 2);
+        encoderDrive(TURN_SPEED, 18, -18, 2);
 
         encoderDrive(DRIVE_SPEED, 110, 110, 12);
 

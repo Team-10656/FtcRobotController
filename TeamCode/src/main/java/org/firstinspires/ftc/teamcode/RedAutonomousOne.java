@@ -134,7 +134,7 @@ public class RedAutonomousOne extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED,  12,  12, 2);
 
-        encoderDrive(TURN_SPEED, 20, -20, 3);
+        encoderDrive(TURN_SPEED, 18, -18, 3);
 
         encoderDrive(DRIVE_SPEED, 80, 80, 8);
 
