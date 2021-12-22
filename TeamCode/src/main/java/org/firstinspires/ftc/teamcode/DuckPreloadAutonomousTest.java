@@ -125,8 +125,8 @@ public class DuckPreloadAutonomousTest extends LinearOpMode {
         telemetry.addData("Mode", "running");
         telemetry.update();
 
-        leftClaw.setPosition(1);
-        rightClaw.setPosition(1);
+        leftClaw.setPosition(0);
+        rightClaw.setPosition(0);
 
         armOne.setPower(0.6);
         armTwo.setPower(0.6);
@@ -140,19 +140,14 @@ public class DuckPreloadAutonomousTest extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 4, -4, 1);
 
-        encoderDrive(DRIVE_SPEED,  12,  12, 2);
-
-        leftClaw.setPosition(0);
-        rightClaw.setPosition(0);
-
-        sleep(500);
+        encoderDrive(DRIVE_SPEED,  10,  10, 2);
 
         leftClaw.setPosition(1);
         rightClaw.setPosition(1);
 
         encoderDrive(TURN_SPEED, 19, -19, 2);
 
-        encoderDrive(DRIVE_SPEED / 2, -36, -36, 4);
+        encoderDrive(DRIVE_SPEED / 2, -32, -32, 4);
 
         encoderDrive(TURN_SPEED, -10,10, 1);
 
