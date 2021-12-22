@@ -36,7 +36,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Red Autonomous One", group="Red")
+@Autonomous(name="Red One", group="Red")
 //@Disabled
 public class RedAutonomousOne extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous

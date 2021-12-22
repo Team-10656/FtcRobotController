@@ -31,15 +31,13 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Duck Preload Autonomous Test", group="Test")
+@Autonomous(name="Blue Preload Two", group="Blue")
 //@Disabled
-public class DuckPreloadAutonomousTest extends LinearOpMode {
+public class BluePreloadAutonomousTwo extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -138,7 +136,7 @@ public class DuckPreloadAutonomousTest extends LinearOpMode {
         armOne.setPower(0.0005);
         armTwo.setPower(0.0005);
 
-        encoderDrive(DRIVE_SPEED, 30, -30, -30,30,2);
+        encoderDrive(DRIVE_SPEED, 30, -30, -30,30,3);
 
         encoderDrive(TURN_SPEED, 4, -4, 1);
 
@@ -149,23 +147,9 @@ public class DuckPreloadAutonomousTest extends LinearOpMode {
 
         sleep(500);
 
-        encoderDrive(TURN_SPEED, 19, -19, 2);
+        encoderDrive(TURN_SPEED, -19, 19, 2);
 
-        encoderDrive(DRIVE_SPEED / 2, -32, -32, 4);
-
-        encoderDrive(TURN_SPEED, -10,10, 1);
-
-        encoderDrive(DRIVE_SPEED / 2, -16, -16, 2);
-
-        flywheel.setPower(1);
-        sleep(2000);
-        flywheel.setPower(0);
-
-        encoderDrive(DRIVE_SPEED,  12,  12, 2);
-
-        encoderDrive(TURN_SPEED, 10, -10, 2);
-
-        encoderDrive(DRIVE_SPEED, 100, 100, 11);
+        encoderDrive(DRIVE_SPEED, 60, 60, 7);
 
         armOne.setPower(0);
         armTwo.setPower(0);
@@ -299,5 +283,4 @@ public class DuckPreloadAutonomousTest extends LinearOpMode {
             sleep(250);   // optional pause after each move
         }
     }
-
 }

@@ -35,7 +35,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Blue Duck Autonomous", group="Blue")
+@Autonomous(name="Blue Duck", group="Blue")
 //@Disabled
 public class BlueDuckAutonomous extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
