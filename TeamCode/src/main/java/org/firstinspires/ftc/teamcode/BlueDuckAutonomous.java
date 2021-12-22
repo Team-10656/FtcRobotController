@@ -147,7 +147,7 @@ public class BlueDuckAutonomous extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED,  12,  12, 2);
 
-        encoderDrive(TURN_SPEED, -9, 9, 1);
+        encoderDrive(TURN_SPEED, -10, 10, 1);
 
         encoderDrive(DRIVE_SPEED, 110, 110, 12);
 

@@ -135,7 +135,7 @@ public class PreloadAutonomousTest extends LinearOpMode {
         armOne.setPower(0.0005);
         armTwo.setPower(0.0005);
 
-        encoderDrive(DRIVE_SPEED, 16, -16, -16,16,2);
+        encoderDrive(DRIVE_SPEED, 24, -24, -24,24,2);
 
         encoderDrive(DRIVE_SPEED,  14,  14, 2);
 
