@@ -35,7 +35,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Red Preload Two", group="Red")
+@Autonomous(name="Red Preload Three", group="Red")
 //@Disabled
 public class RedPreloadAutonomousTwo extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
