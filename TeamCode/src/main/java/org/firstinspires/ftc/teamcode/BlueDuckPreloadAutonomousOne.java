@@ -153,7 +153,7 @@ public class BlueDuckPreloadAutonomousOne extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 10,-10, 1);
 
-        encoderDrive(DRIVE_SPEED / 2, -18, -18, 2);
+        encoderDrive(DRIVE_SPEED / 2, -10, -10, 2);
 
         flywheel.setPower(-1);
         sleep(2000);
