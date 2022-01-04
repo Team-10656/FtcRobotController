@@ -138,9 +138,9 @@ public class RedPreloadAutonomousTwo extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED, -30, 30, 30,-30,3);
 
-        encoderDrive(TURN_SPEED, 4, -4, 1);
+//        encoderDrive(TURN_SPEED, 4, -4, 1);
 
-        encoderDrive(DRIVE_SPEED,  12,  12, 2);
+        encoderDrive(DRIVE_SPEED,  14,  14, 2);
 
         leftClaw.setPosition(1);
         rightClaw.setPosition(1);
