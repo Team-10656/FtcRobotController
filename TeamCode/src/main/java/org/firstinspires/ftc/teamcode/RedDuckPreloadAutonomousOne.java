@@ -165,7 +165,7 @@ public class RedDuckPreloadAutonomousOne extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, -10,10, 1);
 
-        encoderDrive(DRIVE_SPEED / 2, -12, -12, 2);
+        encoderDrive(DRIVE_SPEED / 2, -10, -10, 2);
 
         flywheel.setPower(1);
         sleep(2000);
@@ -173,7 +173,7 @@ public class RedDuckPreloadAutonomousOne extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED,  12,  12, 2);
 
-        encoderDrive(TURN_SPEED, 14, -14, 2);
+        encoderDrive(TURN_SPEED, 10, -10, 2);
 
         encoderDrive(DRIVE_SPEED, 100, 100, 11);
 
