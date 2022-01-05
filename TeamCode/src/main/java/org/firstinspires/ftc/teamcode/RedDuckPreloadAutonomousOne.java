@@ -161,7 +161,7 @@ public class RedDuckPreloadAutonomousOne extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 19, -19, 2);
 
-        encoderDrive(DRIVE_SPEED / 2, -38, -38, 4);
+        encoderDrive(DRIVE_SPEED / 2, -36, -36, 4);
 
         encoderDrive(TURN_SPEED, -10,10, 1);
 
