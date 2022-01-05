@@ -146,7 +146,7 @@ public class RedPreloadAutonomousTwo extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, -19, 19, 2);
 
-        encoderDrive(DRIVE_SPEED, 24,24, 4);
+        encoderDrive(DRIVE_SPEED, 20,20, 4);
 
         encoderDrive(TURN_SPEED, 19, -19, 2);
 
