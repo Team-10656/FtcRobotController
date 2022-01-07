@@ -55,7 +55,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
  */
 
 @TeleOp(name="Mecanum Test", group="Linear Opmode")
-//@Disabled
+@Disabled
 public class MecanumTest extends LinearOpMode {
 
     // Creates all the motor and servo variables

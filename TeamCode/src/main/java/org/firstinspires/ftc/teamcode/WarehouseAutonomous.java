@@ -132,7 +132,7 @@ public class WarehouseAutonomous extends LinearOpMode {
         armOne.setPower(0.0005);
         armTwo.setPower(0.0005);
 
-        encoderDrive(DRIVE_SPEED,  40,  30, 3);
+        encoderDrive(DRIVE_SPEED,  50,  50, 5);
         armOne.setPower(0);
         armTwo.setPower(0);
 
