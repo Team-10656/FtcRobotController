@@ -149,7 +149,7 @@ public class RedPreloadAutonomousOne extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, -19, 19, 2);
 
-        encoderDrive(DRIVE_SPEED,  10,  10, 2);
+        encoderDrive(DRIVE_SPEED,  12,  12, 2);
 
         leftClaw.setPosition(1);
         rightClaw.setPosition(1);

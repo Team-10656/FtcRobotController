@@ -152,7 +152,7 @@ public class RedDuckPreloadAutonomousOne extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, -19, 19, 2);
 
-        encoderDrive(DRIVE_SPEED,  10,  10, 1);
+        encoderDrive(DRIVE_SPEED,  12,  12, 1);
 
         leftClaw.setPosition(1);
         rightClaw.setPosition(1);
