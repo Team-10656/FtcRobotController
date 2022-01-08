@@ -146,7 +146,7 @@ public class BluePreloadAutonomousOne extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, -19, 19, 2);
 
-        encoderDrive(DRIVE_SPEED, 18, 18, 4);
+        encoderDrive(DRIVE_SPEED, 17, 17, 2);
 
         encoderDrive(TURN_SPEED, 19, -19, 2);
 
