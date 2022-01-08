@@ -150,7 +150,7 @@ public class BlueDuckPreloadAutonomousOne extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 19, -19, 2);
 
-        encoderDrive(DRIVE_SPEED,  12,  12, 1);
+        encoderDrive(DRIVE_SPEED,  13,  13, 1);
 
         leftClaw.setPosition(1);
         rightClaw.setPosition(1);

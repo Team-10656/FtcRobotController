@@ -140,7 +140,7 @@ public class RedDuckAutonomous extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, -10,10, 1);
 
-        encoderDrive(DRIVE_SPEED / 2, -12, -12, 2);
+        encoderDrive(DRIVE_SPEED / 2, -11, -11, 2);
 
         flywheel.setPower(0.75);
         sleep(2000);
