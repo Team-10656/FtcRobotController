@@ -124,9 +124,6 @@ public class MecanumCode extends LinearOpMode {
         armOne.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         armTwo.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        armOne.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        armTwo.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
@@ -227,7 +224,11 @@ public class MecanumCode extends LinearOpMode {
 
             armParabola = (((ARM_SPEED / 100) * armParabola) / 100);
 
-            armPower = armParabola;
+            if (armParabola > 0.01 || armParabola < -0.01) {
+                armPower = armParabola;
+            } else {
+                armPower = -0.0005;
+            }
 
 //            if (armTest.getState()) {
 //                telemetry.addData("Digital Touch", "Is Not Pressed");

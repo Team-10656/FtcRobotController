@@ -111,9 +111,6 @@ public class BlueAutonomousOne extends LinearOpMode {
         armOne.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         armTwo.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        armOne.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        armTwo.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
         // Send telemetry message to indicate successful Encoder reset
         telemetry.addData("Path0",  "Starting at %7d :%7d", leftRear.getCurrentPosition()
                 , rightFront.getCurrentPosition(), leftFront.getCurrentPosition(), rightRear.getCurrentPosition());
@@ -132,14 +129,17 @@ public class BlueAutonomousOne extends LinearOpMode {
 
         sleep(850);
 
-        armOne.setPower(0);
-        armTwo.setPower(0);
+        armOne.setPower(0.0005);
+        armTwo.setPower(0.0005);
 
         encoderDrive(DRIVE_SPEED,  14,  14, 2);
 
         encoderDrive(TURN_SPEED, -19, 19, 3);
 
         encoderDrive(DRIVE_SPEED, 80, 80, 8);
+
+        armOne.setPower(0);
+        armTwo.setPower(0);
 
     }
 
