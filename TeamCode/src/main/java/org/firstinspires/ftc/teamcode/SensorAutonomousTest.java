@@ -203,8 +203,14 @@ public class SensorAutonomousTest extends LinearOpMode {
             }
         }
 
+        encoderDrive(DRIVE_SPEED, 6, 6, 1);
+
         leftClaw.setPosition(1);
         rightClaw.setPosition(1);
+
+        sleep(1000);
+
+        encoderDrive(DRIVE_SPEED, -6, -6, 1);
 
         encoderDrive(TURN_SPEED, 19, -19, 2);
 
