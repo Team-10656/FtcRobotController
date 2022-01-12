@@ -152,7 +152,7 @@ public class SensorAutonomousTest extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED, 8, 8, 1);
 
-        encoderDrive(TURN_SPEED, 38, -38, 4);
+        encoderDrive(TURN_SPEED, 40, -40, 4);
 
         encoderDrive(DRIVE_SPEED, -4, -4, 1);
 
@@ -176,6 +176,8 @@ public class SensorAutonomousTest extends LinearOpMode {
 
             encoderDrive(DRIVE_SPEED, 6, 6, 1);
 
+            encoderDrive(TURN_SPEED, 19, -19, 2);
+
             if (distance.getDistance(DistanceUnit.INCH) <= 6) {
                 encoderDrive(TURN_SPEED, -19, 19, 2);
 
@@ -194,15 +196,10 @@ public class SensorAutonomousTest extends LinearOpMode {
 
                 encoderDrive(TURN_SPEED, -19, 19, 2);
 
-                encoderDrive(DRIVE_SPEED, 6, 6, 1);
+                encoderDrive(DRIVE_SPEED, 20, 20, 2);
 
-                if (distance.getDistance(DistanceUnit.INCH) <= 6) {
-                    encoderDrive(TURN_SPEED, -19, 19, 2);
+                encoderDrive(TURN_SPEED, -19, 19, 2);
 
-                    encoderDrive(DRIVE_SPEED, 20, 20, 2);
-
-                    encoderDrive(TURN_SPEED, -19, 19, 2);
-                }
             }
         }
 
