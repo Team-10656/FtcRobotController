@@ -55,7 +55,7 @@ public class SensorAutonomousTest extends LinearOpMode {
     private Servo rightClaw = null;
     private DcMotor armOne = null;
     private DcMotor armTwo = null;
-    private DistanceSensor sensorRange;
+    private DistanceSensor distance;
 
 
     // Sets the motor specifications as variables
@@ -83,9 +83,9 @@ public class SensorAutonomousTest extends LinearOpMode {
         rightClaw = hardwareMap.get(Servo.class, "right_claw");
         armOne = hardwareMap.get(DcMotor.class, "arm_one");
         armTwo = hardwareMap.get(DcMotor.class, "arm_two");
-        sensorRange = hardwareMap.get(DistanceSensor.class, "sensor_range");
+        distance = hardwareMap.get(DistanceSensor.class, "distance");
 
-        Rev2mDistanceSensor sensorTimeOfFlight = (Rev2mDistanceSensor)sensorRange;
+        Rev2mDistanceSensor sensorTimeOfFlight = (Rev2mDistanceSensor)distance;
 
 
         // sets the direction of the motors
@@ -156,7 +156,7 @@ public class SensorAutonomousTest extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED, -4, -4, 1);
 
-        if (sensorRange.getDistance(DistanceUnit.INCH) <= 6) {
+        if (distance.getDistance(DistanceUnit.INCH) <= 6) {
             encoderDrive(TURN_SPEED, -19, 19, 2);
 
             encoderDrive(DRIVE_SPEED, 20, 20, 2);
@@ -176,7 +176,7 @@ public class SensorAutonomousTest extends LinearOpMode {
 
             encoderDrive(DRIVE_SPEED, 6, 6, 1);
 
-            if (sensorRange.getDistance(DistanceUnit.INCH) <= 6) {
+            if (distance.getDistance(DistanceUnit.INCH) <= 6) {
                 encoderDrive(TURN_SPEED, -19, 19, 2);
 
                 encoderDrive(DRIVE_SPEED, 20, 20, 2);
@@ -196,7 +196,7 @@ public class SensorAutonomousTest extends LinearOpMode {
 
                 encoderDrive(DRIVE_SPEED, 6, 6, 1);
 
-                if (sensorRange.getDistance(DistanceUnit.INCH) <= 6) {
+                if (distance.getDistance(DistanceUnit.INCH) <= 6) {
                     encoderDrive(TURN_SPEED, -19, 19, 2);
 
                     encoderDrive(DRIVE_SPEED, 20, 20, 2);
