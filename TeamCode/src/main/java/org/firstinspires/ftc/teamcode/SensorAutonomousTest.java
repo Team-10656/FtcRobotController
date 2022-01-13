@@ -153,12 +153,12 @@ public class SensorAutonomousTest extends LinearOpMode {
             leftRear.setPower(0.8);
         }
 
-        rightFront.setPower(-1);
-        leftFront.setPower(-1);
-        rightRear.setPower(-1);
-        leftRear.setPower(-1);
+        rightFront.setPower(-0.8);
+        leftFront.setPower(-0.8);
+        rightRear.setPower(-0.8);
+        leftRear.setPower(-0.8);
 
-        sleep(250);
+        sleep(100);
 
         rightFront.setPower(0);
         leftFront.setPower(0);
@@ -169,7 +169,7 @@ public class SensorAutonomousTest extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 40, -40, 4);
 
-        if (distance.getDistance(DistanceUnit.INCH) <= 6) {
+        if (distance.getDistance(DistanceUnit.INCH) <= 4) {
             encoderDrive(TURN_SPEED, -20, 20, 2);
 
             armOne.setPower(-0.6);
@@ -191,7 +191,7 @@ public class SensorAutonomousTest extends LinearOpMode {
 
             encoderDrive(TURN_SPEED, 20, -20, 2);
 
-            if (distance.getDistance(DistanceUnit.INCH) <= 6) {
+            if (distance.getDistance(DistanceUnit.INCH) <= 4) {
                 encoderDrive(TURN_SPEED, -20, 20, 2);
 
                 armOne.setPower(-0.6);

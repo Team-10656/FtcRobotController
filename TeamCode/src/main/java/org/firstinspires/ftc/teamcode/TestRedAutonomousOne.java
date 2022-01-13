@@ -146,12 +146,12 @@ public class TestRedAutonomousOne extends LinearOpMode {
             leftRear.setPower(0.8);
         }
 
-        rightFront.setPower(-1);
-        leftFront.setPower(-1);
-        rightRear.setPower(-1);
-        leftRear.setPower(-1);
+        rightFront.setPower(-0.8);
+        leftFront.setPower(-0.8);
+        rightRear.setPower(-0.8);
+        leftRear.setPower(-0.8);
 
-        sleep(250);
+        sleep(100);
 
         rightFront.setPower(0);
         leftFront.setPower(0);
