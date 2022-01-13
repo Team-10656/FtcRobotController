@@ -141,10 +141,10 @@ public class TestRedDuckAutonomous extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED / 2, -11, -11, 2);
 
-        rightFront.setPower(-0.2);
-        leftFront.setPower(-0.2);
-        rightRear.setPower(-0.2);
-        leftRear.setPower(-0.2);
+        rightFront.setPower(-0.01);
+        leftFront.setPower(-0.01);
+        rightRear.setPower(-0.01);
+        leftRear.setPower(-0.01);
 
         sleep(200);
 
