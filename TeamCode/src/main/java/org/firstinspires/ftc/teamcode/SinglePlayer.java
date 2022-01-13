@@ -53,7 +53,7 @@ import com.qualcomm.robotcore.util.Range;
  */
 
 @TeleOp(name="Single Player Code", group="Linear Opmode")
-@Disabled
+//@Disabled
 public class SinglePlayer extends LinearOpMode {
 
     // Creates all the motor and servo variables
