@@ -169,7 +169,7 @@ public class SensorAutonomousTest extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 40, -40, 4);
 
-        if (distance.getDistance(DistanceUnit.INCH) <= 4) {
+        if (distance.getDistance(DistanceUnit.INCH) <= 6) {
             encoderDrive(TURN_SPEED, -20, 20, 2);
 
             armOne.setPower(-0.6);
@@ -191,7 +191,7 @@ public class SensorAutonomousTest extends LinearOpMode {
 
             encoderDrive(TURN_SPEED, 20, -20, 2);
 
-            if (distance.getDistance(DistanceUnit.INCH) <= 4) {
+            if (distance.getDistance(DistanceUnit.INCH) <= 6) {
                 encoderDrive(TURN_SPEED, -20, 20, 2);
 
                 armOne.setPower(-0.6);
@@ -220,8 +220,6 @@ public class SensorAutonomousTest extends LinearOpMode {
         rightClaw.setPosition(1);
 
         sleep(1000);
-
-        encoderDrive(DRIVE_SPEED, -4, -4, 1);
 
         encoderDrive(TURN_SPEED, 20, -20, 2);
 
