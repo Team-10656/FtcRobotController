@@ -151,7 +151,7 @@ public class TestRedAutonomousOne extends LinearOpMode {
         rightRear.setPower(0);
         leftRear.setPower(0);
 
-        sleep(250);
+        sleep(500);
 
         encoderDrive(TURN_SPEED, 20, -20, 3);
 

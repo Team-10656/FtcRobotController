@@ -158,7 +158,7 @@ public class SensorAutonomousTest extends LinearOpMode {
         rightRear.setPower(0);
         leftRear.setPower(0);
 
-        sleep(250);
+        sleep(500);
 
         encoderDrive(TURN_SPEED, 40, -40, 4);
 
