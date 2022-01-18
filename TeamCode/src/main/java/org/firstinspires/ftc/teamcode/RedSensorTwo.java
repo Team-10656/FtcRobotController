@@ -39,9 +39,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-@Autonomous(name="Sensor Autonomous Test", group="Red")
+@Autonomous(name="Red Sensor Right", group="Red")
 //@Disabled
-public class SensorAutonomousTest extends LinearOpMode {
+public class RedSensorTwo extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -167,10 +167,10 @@ public class SensorAutonomousTest extends LinearOpMode {
 
         sleep(500);
 
-        encoderDrive(TURN_SPEED, 39, -39, 4);
+        encoderDrive(TURN_SPEED, -39, 39, 4);
 
         if (distance.getDistance(DistanceUnit.INCH) <= 8) {
-            encoderDrive(TURN_SPEED, -19, 19, 2);
+            encoderDrive(TURN_SPEED, 19, -19, 2);
 
             armOne.setPower(-0.6);
             armTwo.setPower(-0.6);
@@ -182,17 +182,17 @@ public class SensorAutonomousTest extends LinearOpMode {
 
             encoderDrive(DRIVE_SPEED, 26, 26, 2);
 
-            encoderDrive(TURN_SPEED, -19, 19, 2);
+            encoderDrive(TURN_SPEED, 19, -19, 2);
         } else {
-
-            encoderDrive(TURN_SPEED, -19, 19, 2);
-
-            encoderDrive(DRIVE_SPEED, 6, 6, 1);
 
             encoderDrive(TURN_SPEED, 19, -19, 2);
 
+            encoderDrive(DRIVE_SPEED, 6, 6, 1);
+
+            encoderDrive(TURN_SPEED, -19, 19, 2);
+
             if (distance.getDistance(DistanceUnit.INCH) <= 8) {
-                encoderDrive(TURN_SPEED, -20, 20, 2);
+                encoderDrive(TURN_SPEED, 20, -20, 2);
 
                 armOne.setPower(-0.6);
                 armTwo.setPower(-0.6);
@@ -204,14 +204,14 @@ public class SensorAutonomousTest extends LinearOpMode {
 
                 encoderDrive(DRIVE_SPEED, 24, 24, 2);
 
-                encoderDrive(TURN_SPEED, -19, 19, 2);
+                encoderDrive(TURN_SPEED, 19, -19, 2);
             } else {
 
-                encoderDrive(TURN_SPEED, -19, 19, 2);
+                encoderDrive(TURN_SPEED, 19, -19, 2);
 
                 encoderDrive(DRIVE_SPEED, 22, 22, 2);
 
-                encoderDrive(TURN_SPEED, -19, 19, 2);
+                encoderDrive(TURN_SPEED, 19, -19, 2);
 
             }
         }
