@@ -140,7 +140,7 @@ public class BlueAutonomousOne extends LinearOpMode {
         armOne.setPower(0.0005);
         armTwo.setPower(0.0005);
 
-        while(distance.getDistance(DistanceUnit.INCH) <= 14) {
+        while(distance.getDistance(DistanceUnit.INCH) <= 12) {
             rightFront.setPower(0.8);
             leftFront.setPower(0.8);
             rightRear.setPower(0.8);
