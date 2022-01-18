@@ -29,12 +29,16 @@
 
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 @Autonomous(name="Red Duck One", group="Red")
 //@Disabled
@@ -52,6 +56,7 @@ public class RedDuckAutonomous extends LinearOpMode {
     private Servo rightClaw = null;
     private DcMotor armOne = null;
     private DcMotor armTwo = null;
+    private DistanceSensor distance;
 
 
     // Sets the motor specifications as variables
@@ -79,6 +84,9 @@ public class RedDuckAutonomous extends LinearOpMode {
         rightClaw = hardwareMap.get(Servo.class, "right_claw");
         armOne = hardwareMap.get(DcMotor.class, "arm_one");
         armTwo = hardwareMap.get(DcMotor.class, "arm_two");
+        distance = hardwareMap.get(DistanceSensor.class, "distance");
+
+        Rev2mDistanceSensor sensorTimeOfFlight = (Rev2mDistanceSensor)distance;
 
         // sets the direction of the motors
         leftRear.setDirection(DcMotor.Direction.REVERSE);
@@ -132,7 +140,26 @@ public class RedDuckAutonomous extends LinearOpMode {
         armOne.setPower(0.0005);
         armTwo.setPower(0.0005);
 
-        encoderDrive(DRIVE_SPEED, 14, 14, 2);
+        while(distance.getDistance(DistanceUnit.INCH) <= 12) {
+            rightFront.setPower(0.8);
+            leftFront.setPower(0.8);
+            rightRear.setPower(0.8);
+            leftRear.setPower(0.8);
+        }
+
+        rightFront.setPower(-0.8);
+        leftFront.setPower(-0.8);
+        rightRear.setPower(-0.8);
+        leftRear.setPower(-0.8);
+
+        sleep(100);
+
+        rightFront.setPower(0);
+        leftFront.setPower(0);
+        rightRear.setPower(0);
+        leftRear.setPower(0);
+
+        sleep(500);
 
         encoderDrive(TURN_SPEED, 19, -19, 2);
 
