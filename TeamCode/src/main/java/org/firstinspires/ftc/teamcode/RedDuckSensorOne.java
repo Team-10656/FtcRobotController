@@ -39,7 +39,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-@Autonomous(name="Red Sensor Left", group="Red")
+@Autonomous(name="Red Duck Sensor", group="Red")
 //@Disabled
 public class RedDuckSensorOne extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
