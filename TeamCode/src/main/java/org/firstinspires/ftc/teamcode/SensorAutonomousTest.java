@@ -175,12 +175,12 @@ public class SensorAutonomousTest extends LinearOpMode {
             armOne.setPower(-0.6);
             armTwo.setPower(-0.6);
 
-            sleep(700);
+            sleep(600);
 
             armOne.setPower(0.0005);
             armTwo.setPower(0.0005);
 
-            encoderDrive(DRIVE_SPEED, 20, 20, 2);
+            encoderDrive(DRIVE_SPEED, 26, 26, 2);
 
             encoderDrive(TURN_SPEED, -19, 19, 2);
         } else {
@@ -197,19 +197,19 @@ public class SensorAutonomousTest extends LinearOpMode {
                 armOne.setPower(-0.6);
                 armTwo.setPower(-0.6);
 
-                sleep(350);
+                sleep(335);
 
                 armOne.setPower(0.0005);
                 armTwo.setPower(0.0005);
 
-                encoderDrive(DRIVE_SPEED, 20, 20, 2);
+                encoderDrive(DRIVE_SPEED, 24, 24, 2);
 
                 encoderDrive(TURN_SPEED, -19, 19, 2);
             } else {
 
                 encoderDrive(TURN_SPEED, -19, 19, 2);
 
-                encoderDrive(DRIVE_SPEED, 20, 20, 2);
+                encoderDrive(DRIVE_SPEED, 22, 22, 2);
 
                 encoderDrive(TURN_SPEED, -19, 19, 2);
 
