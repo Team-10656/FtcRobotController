@@ -167,10 +167,10 @@ public class BlueSensorOne extends LinearOpMode {
 
         sleep(500);
 
-        encoderDrive(TURN_SPEED, -39, 39, 4);
+        encoderDrive(TURN_SPEED, -40, 40, 4);
 
         if (distance.getDistance(DistanceUnit.INCH) <= 8) {
-            encoderDrive(TURN_SPEED, 19, -19, 2);
+            encoderDrive(TURN_SPEED, 20, -20, 2);
 
             armOne.setPower(-0.6);
             armTwo.setPower(-0.6);
@@ -180,16 +180,16 @@ public class BlueSensorOne extends LinearOpMode {
             armOne.setPower(0.0005);
             armTwo.setPower(0.0005);
 
-            encoderDrive(DRIVE_SPEED, 26, 26, 2);
+            encoderDrive(DRIVE_SPEED, 26, 26, 3);
 
-            encoderDrive(TURN_SPEED, 19, -19, 2);
+            encoderDrive(TURN_SPEED, 20, -20, 2);
         } else {
 
-            encoderDrive(TURN_SPEED, 19, -19, 2);
+            encoderDrive(TURN_SPEED, 20, -20, 2);
 
             encoderDrive(DRIVE_SPEED, 6, 6, 1);
 
-            encoderDrive(TURN_SPEED, -19, 19, 2);
+            encoderDrive(TURN_SPEED, -20, 20, 2);
 
             if (distance.getDistance(DistanceUnit.INCH) <= 8) {
                 encoderDrive(TURN_SPEED, 20, -20, 2);
@@ -204,14 +204,14 @@ public class BlueSensorOne extends LinearOpMode {
 
                 encoderDrive(DRIVE_SPEED, 24, 24, 2);
 
-                encoderDrive(TURN_SPEED, 19, -19, 2);
+                encoderDrive(TURN_SPEED, 20, -20, 2);
             } else {
 
-                encoderDrive(TURN_SPEED, 19, -19, 2);
+                encoderDrive(TURN_SPEED, 20, -20, 2);
 
-                encoderDrive(DRIVE_SPEED, 22, 22, 2);
+                encoderDrive(DRIVE_SPEED, 22, 22, 3);
 
-                encoderDrive(TURN_SPEED, 19, -19, 2);
+                encoderDrive(TURN_SPEED, 20, -20, 2);
 
             }
         }
@@ -221,7 +221,7 @@ public class BlueSensorOne extends LinearOpMode {
 
         sleep(1000);
 
-        encoderDrive(TURN_SPEED, -19, 19, 2);
+        encoderDrive(TURN_SPEED, -20, 20, 2);
 
         encoderDrive(DRIVE_SPEED, 60, 60, 7);
 

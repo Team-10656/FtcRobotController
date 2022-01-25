@@ -181,7 +181,7 @@ public class RedSensorTwo extends LinearOpMode {
             armOne.setPower(0.0005);
             armTwo.setPower(0.0005);
 
-            encoderDrive(DRIVE_SPEED, 22, 22, 3);
+            encoderDrive(DRIVE_SPEED, 20, 20, 3);
 
             encoderDrive(TURN_SPEED, 20, -20, 2);
         } else {
