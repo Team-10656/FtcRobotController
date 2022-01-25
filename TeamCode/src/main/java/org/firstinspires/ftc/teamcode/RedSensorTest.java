@@ -182,6 +182,8 @@ public class RedSensorTest extends LinearOpMode {
             armTwo.setPower(0.0005);
         } else if (distanceRight.getDistance(DistanceUnit.INCH) <= 8) {
             encoderDrive(TURN_SPEED, -20, 20, 2);
+        } else {
+            encoderDrive(TURN_SPEED, -20, 20, 2);
 
             armOne.setPower(-0.6);
             armTwo.setPower(-0.6);
@@ -190,8 +192,6 @@ public class RedSensorTest extends LinearOpMode {
 
             armOne.setPower(0.0005);
             armTwo.setPower(0.0005);
-        } else {
-            encoderDrive(TURN_SPEED, -20, 20, 2);
         }
 
         encoderDrive(DRIVE_SPEED, 22, 22, 2);
