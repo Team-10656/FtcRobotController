@@ -29,9 +29,7 @@
 
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
@@ -40,9 +38,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-@Autonomous(name="Blue Sensor Left", group="Blue")
-@Disabled
-public class BlueSensorTwo extends LinearOpMode {
+@Autonomous(name="Red Dual Sensor Duck", group="Red")
+//@Disabled
+public class RedDualSensorDuck extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -57,6 +55,8 @@ public class BlueSensorTwo extends LinearOpMode {
     private DcMotor armOne = null;
     private DcMotor armTwo = null;
     private DistanceSensor distance;
+    private DistanceSensor distanceRight;
+    private DistanceSensor distanceLeft;
 
 
     // Sets the motor specifications as variables
@@ -85,8 +85,9 @@ public class BlueSensorTwo extends LinearOpMode {
         armOne = hardwareMap.get(DcMotor.class, "arm_one");
         armTwo = hardwareMap.get(DcMotor.class, "arm_two");
         distance = hardwareMap.get(DistanceSensor.class, "distance");
+        distanceRight = hardwareMap.get(DistanceSensor.class, "distance_right");
+        distanceLeft = hardwareMap.get(DistanceSensor.class, "distance_left");
 
-        Rev2mDistanceSensor sensorTimeOfFlight = (Rev2mDistanceSensor)distance;
 
 
         // sets the direction of the motors
@@ -168,10 +169,8 @@ public class BlueSensorTwo extends LinearOpMode {
 
         sleep(500);
 
-        encoderDrive(TURN_SPEED, 40, -40, 4);
-
-        if (distance.getDistance(DistanceUnit.INCH) <= 8) {
-            encoderDrive(TURN_SPEED, -20, 20, 2);
+        if(distanceLeft.getDistance(DistanceUnit.INCH) <= 8) {
+            encoderDrive(TURN_SPEED, 20, -20, 2);
 
             armOne.setPower(-0.6);
             armTwo.setPower(-0.6);
@@ -180,42 +179,23 @@ public class BlueSensorTwo extends LinearOpMode {
 
             armOne.setPower(0.0005);
             armTwo.setPower(0.0005);
-
-            encoderDrive(DRIVE_SPEED, 20, 20, 2);
-
-            encoderDrive(TURN_SPEED, -20, 20, 2);
+        } else if (distanceRight.getDistance(DistanceUnit.INCH) <= 8) {
+            encoderDrive(TURN_SPEED, 20, -20, 2);
         } else {
-
             encoderDrive(TURN_SPEED, 20, -20, 2);
 
-            encoderDrive(DRIVE_SPEED, 6, 6, 1);
+            armOne.setPower(-0.6);
+            armTwo.setPower(-0.6);
 
-            encoderDrive(TURN_SPEED, -20, 20, 2);
+            sleep(350);
 
-            if (distance.getDistance(DistanceUnit.INCH) <= 8) {
-                encoderDrive(TURN_SPEED, -20, 20, 2);
-
-                armOne.setPower(-0.6);
-                armTwo.setPower(-0.6);
-
-                sleep(335);
-
-                armOne.setPower(0.0005);
-                armTwo.setPower(0.0005);
-
-                encoderDrive(DRIVE_SPEED, 22, 22, 2);
-
-                encoderDrive(TURN_SPEED, -20, 20, 2);
-            } else {
-
-                encoderDrive(TURN_SPEED, -20, 20, 2);
-
-                encoderDrive(DRIVE_SPEED, 24, 24, 2);
-
-                encoderDrive(TURN_SPEED, -20, 20, 2);
-
-            }
+            armOne.setPower(0.0005);
+            armTwo.setPower(0.0005);
         }
+
+        encoderDrive(DRIVE_SPEED, 22, 22, 2);
+
+        encoderDrive(TURN_SPEED, -20, 20, 2);
 
         leftClaw.setPosition(1);
         rightClaw.setPosition(1);
@@ -224,7 +204,52 @@ public class BlueSensorTwo extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 20, -20, 2);
 
-        encoderDrive(DRIVE_SPEED, 60, 60, 7);
+        while(distance.getDistance(DistanceUnit.INCH) >= 26) {
+            rightFront.setPower(-0.5);
+            leftFront.setPower(-0.5);
+            rightRear.setPower(-0.5);
+            leftRear.setPower(-0.5);
+        }
+
+        rightFront.setPower(0.5);
+        leftFront.setPower(0.5);
+        rightRear.setPower(0.5);
+        leftRear.setPower(0.5);
+
+        sleep(100);
+
+        rightFront.setPower(0);
+        leftFront.setPower(0);
+        rightRear.setPower(0);
+        leftRear.setPower(0);
+
+        sleep(500);
+
+        encoderDrive(TURN_SPEED, -10,10, 1);
+
+        encoderDrive(DRIVE_SPEED / 2, -11, -11, 2);
+
+        rightFront.setPower(-0.01);
+        leftFront.setPower(-0.01);
+        rightRear.setPower(-0.01);
+        leftRear.setPower(-0.01);
+
+        sleep(200);
+
+        flywheel.setPower(0.8);
+        sleep(3000);
+        flywheel.setPower(0);
+
+        rightFront.setPower(0);
+        leftFront.setPower(0);
+        rightRear.setPower(0);
+        leftRear.setPower(0);
+
+        encoderDrive(DRIVE_SPEED,  12,  12, 2);
+
+        encoderDrive(TURN_SPEED, 10, -10, 1);
+
+        encoderDrive(DRIVE_SPEED, 100, 100, 11);
 
         armOne.setPower(0);
         armTwo.setPower(0);
