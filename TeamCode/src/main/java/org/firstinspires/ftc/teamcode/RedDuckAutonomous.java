@@ -161,9 +161,28 @@ public class RedDuckAutonomous extends LinearOpMode {
 
         sleep(500);
 
-        encoderDrive(TURN_SPEED, 19, -19, 2);
+        encoderDrive(TURN_SPEED, 20, -20, 2);
 
-        encoderDrive(DRIVE_SPEED / 2, -20, -20, 2);
+        while(distance.getDistance(DistanceUnit.INCH) >= 26) {
+            rightFront.setPower(-0.5);
+            leftFront.setPower(-0.5);
+            rightRear.setPower(-0.5);
+            leftRear.setPower(-0.5);
+        }
+
+        rightFront.setPower(0.5);
+        leftFront.setPower(0.5);
+        rightRear.setPower(0.5);
+        leftRear.setPower(0.5);
+
+        sleep(100);
+
+        rightFront.setPower(0);
+        leftFront.setPower(0);
+        rightRear.setPower(0);
+        leftRear.setPower(0);
+
+        sleep(500);
 
         encoderDrive(TURN_SPEED, -10,10, 1);
 
