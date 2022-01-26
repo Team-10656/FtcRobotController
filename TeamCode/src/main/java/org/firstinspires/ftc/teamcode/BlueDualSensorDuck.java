@@ -65,8 +65,8 @@ public class BlueDualSensorDuck extends LinearOpMode {
     static final double DRIVE_GEAR_REDUCTION = 1.0;
     static final double WHEEL_DIAMETER_INCHES = 4;
     static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) / (WHEEL_DIAMETER_INCHES * 3.1415);
-    static final double DRIVE_SPEED = 1;
-    static final double TURN_SPEED = 0.8;
+    static final double DRIVE_SPEED = 0.6;
+    static final double TURN_SPEED = 0.5;
 
 
     // called when init button is  pressed.
@@ -204,7 +204,7 @@ public class BlueDualSensorDuck extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, -20, 20, 2);
 
-        while(distance.getDistance(DistanceUnit.INCH) >= 26) {
+        while(distance.getDistance(DistanceUnit.INCH) >= 20) {
             rightFront.setPower(-0.5);
             leftFront.setPower(-0.5);
             rightRear.setPower(-0.5);
@@ -227,7 +227,7 @@ public class BlueDualSensorDuck extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 10,-10, 1);
 
-        encoderDrive(DRIVE_SPEED / 2, -11, -11, 2);
+        encoderDrive(DRIVE_SPEED / 2, -16, -16, 2);
 
         rightFront.setPower(-0.01);
         leftFront.setPower(-0.01);
