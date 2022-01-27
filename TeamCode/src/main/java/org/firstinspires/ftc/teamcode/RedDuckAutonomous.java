@@ -141,18 +141,11 @@ public class RedDuckAutonomous extends LinearOpMode {
         armTwo.setPower(0.0005);
 
         while(distance.getDistance(DistanceUnit.INCH) <= 12) {
-            rightFront.setPower(0.8);
-            leftFront.setPower(0.8);
-            rightRear.setPower(0.8);
-            leftRear.setPower(0.8);
+            rightFront.setPower(0.6);
+            leftFront.setPower(0.6);
+            rightRear.setPower(0.6);
+            leftRear.setPower(0.6);
         }
-
-        rightFront.setPower(-0.8);
-        leftFront.setPower(-0.8);
-        rightRear.setPower(-0.8);
-        leftRear.setPower(-0.8);
-
-        sleep(100);
 
         rightFront.setPower(0);
         leftFront.setPower(0);
@@ -170,13 +163,6 @@ public class RedDuckAutonomous extends LinearOpMode {
             leftRear.setPower(-0.5);
         }
 
-        rightFront.setPower(0.5);
-        leftFront.setPower(0.5);
-        rightRear.setPower(0.5);
-        leftRear.setPower(0.5);
-
-        sleep(100);
-
         rightFront.setPower(0);
         leftFront.setPower(0);
         rightRear.setPower(0);
@@ -186,12 +172,17 @@ public class RedDuckAutonomous extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, -10,10, 1);
 
-        encoderDrive(DRIVE_SPEED / 2, -16, -16, 2);
+        while(distance.getDistance(DistanceUnit.INCH) >= 9) {
+            rightFront.setPower(-0.5);
+            leftFront.setPower(-0.5);
+            rightRear.setPower(-0.5);
+            leftRear.setPower(-0.5);
+        }
 
-        rightFront.setPower(-0.01);
-        leftFront.setPower(-0.01);
-        rightRear.setPower(-0.01);
-        leftRear.setPower(-0.01);
+        rightFront.setPower(-0.025);
+        leftFront.setPower(-0.025);
+        rightRear.setPower(-0.025);
+        leftRear.setPower(-0.025);
 
         sleep(200);
 
