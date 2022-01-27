@@ -67,7 +67,8 @@ public class MecanumTest extends LinearOpMode {
     private DcMotor flywheel = null;
     private Servo leftClaw = null;
     private Servo rightClaw = null;
-    private DcMotor arm = null;
+    private DcMotor armOne = null;
+    private DcMotor armTwo = null;
 
 //    DigitalChannel armTest;
 
@@ -90,7 +91,8 @@ public class MecanumTest extends LinearOpMode {
         flywheel = hardwareMap.get(DcMotor.class, "flywheel");
         leftClaw = hardwareMap.get(Servo.class, "left_claw");
         rightClaw = hardwareMap.get(Servo.class, "right_claw");
-        arm = hardwareMap.get(DcMotor.class, "arm");
+        armOne = hardwareMap.get(DcMotor.class, "arm_one");
+        armTwo = hardwareMap.get(DcMotor.class, "arm_two");
 //        armTest = hardwareMap.get(DigitalChannel.class, "arm_test");
 
         // Sets the direction of all the motors and servos
@@ -101,7 +103,8 @@ public class MecanumTest extends LinearOpMode {
         flywheel.setDirection(DcMotor.Direction.REVERSE);
         leftClaw.setDirection(Servo.Direction.FORWARD);
         rightClaw.setDirection(Servo.Direction.REVERSE);
-        arm.setDirection(DcMotor.Direction.FORWARD);
+        armOne.setDirection(DcMotor.Direction.FORWARD);
+        armTwo.setDirection(DcMotor.Direction.REVERSE);
 
 //        armTest.setMode(DigitalChannel.Mode.INPUT);
 
@@ -110,14 +113,16 @@ public class MecanumTest extends LinearOpMode {
         rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         flywheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        armOne.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        armTwo.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         leftRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightRear.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         flywheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        armOne.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        armTwo.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         // Wait for the game to start (driver presses PLAY)
@@ -149,38 +154,35 @@ public class MecanumTest extends LinearOpMode {
             if (gamepad1.left_stick_y < driveDeadzone && gamepad1.left_stick_y > -driveDeadzone) {
                 driveParabola = 0;
             } else if (gamepad1.left_stick_y < 0) {
-                driveParabola = -driveCurve * ((gamepad1.left_stick_y * 100) * (gamepad1.left_stick_y * 100));
+                driveParabola = -driveCurve * ((gamepad1.left_stick_y * 10) * (gamepad1.left_stick_y * 10));
             } else if (gamepad1.left_stick_y > 0) {
-                driveParabola = driveCurve * ((gamepad1.left_stick_y * 100) * (gamepad1.left_stick_y * 100));
+                driveParabola = driveCurve * ((gamepad1.left_stick_y * 10) * (gamepad1.left_stick_y * 10));
             }
 
             if (gamepad1.left_stick_x < driveDeadzone && gamepad1.left_stick_x > -driveDeadzone) {
                 strafeParabola = 0;
             } else if (gamepad1.left_stick_x < 0) {
-                strafeParabola = -driveCurve * ((gamepad1.left_stick_x * 100) * (gamepad1.left_stick_x * 100));
+                strafeParabola = -driveCurve * ((gamepad1.left_stick_x * 10) * (gamepad1.left_stick_x * 10));
             } else if (gamepad1.left_stick_x > 0) {
-                strafeParabola = driveCurve * ((gamepad1.left_stick_x * 100) * (gamepad1.left_stick_x * 100));
+                strafeParabola = driveCurve * ((gamepad1.left_stick_x * 10) * (gamepad1.left_stick_x * 10));
             }
 
             if (gamepad1.right_stick_x < driveDeadzone && gamepad1.right_stick_x > -driveDeadzone) {
                 turnParabola = 0;
             } else if (gamepad1.right_stick_x < 0) {
-                turnParabola = -driveCurve * ((gamepad1.right_stick_x * 100) * (gamepad1.right_stick_x * 100));
+                turnParabola = -driveCurve * ((gamepad1.right_stick_x * 10) * (gamepad1.right_stick_x * 10));
             } else if (gamepad1.right_stick_x > 0) {
-                turnParabola = driveCurve * ((gamepad1.right_stick_x * 100) * (gamepad1.right_stick_x * 100));
+                turnParabola = driveCurve * ((gamepad1.right_stick_x * 10) * (gamepad1.right_stick_x * 10));
             }
 
             // turns the parabolic values into values the motors can use
-//            double drive = driveParabola / 100;
-//            double strafe = -strafeParabola / 100;
-//            double turn = turnParabola / 100;
-
-            double drive = ((DEFAULT_SPEED / 100) * driveParabola) / 100;
-            double strafe = ((DEFAULT_SPEED / 100) * strafeParabola) / 100;
-            double turn = ((DEFAULT_SPEED / 100) * turnParabola) / 100;
+            double drive = driveParabola / 10;
+            double strafe = -strafeParabola / 10;
+            double turn = turnParabola / 10;
 
             // Sets the power that the motors will get and also tests to see if it should move at half speed or not
             if (drive != 0 && gamepad1.left_trigger != 0 || turn != 0 && gamepad1.left_trigger != 0 || strafe != 0 && gamepad1.left_trigger != 0) {
+                turn = gamepad1.right_stick_x / 3;
                 leftFrontPower = Range.clip(strafe + drive - turn, -PRECISION_SPEED, PRECISION_SPEED);
                 leftRearPower = Range.clip(strafe - drive + turn, -PRECISION_SPEED, PRECISION_SPEED);
                 rightRearPower = Range.clip(strafe + drive + turn, -PRECISION_SPEED, PRECISION_SPEED);
@@ -221,12 +223,14 @@ public class MecanumTest extends LinearOpMode {
             }
 
             armParabola = (((ARM_SPEED / 100) * armParabola) / 100);
-//            if (armTest.getState()) {
+
             if (armParabola > 0.01 || armParabola < -0.01) {
                 armPower = armParabola;
             } else {
-                armPower = 0.01;
+                armPower = -0.0005;
             }
+
+//            if (armTest.getState()) {
 //                telemetry.addData("Digital Touch", "Is Not Pressed");
 //            } else {
 //                armPower = 0;
@@ -241,7 +245,8 @@ public class MecanumTest extends LinearOpMode {
             flywheel.setPower(flyWheelPower);
             leftClaw.setPosition(clawPosition);
             rightClaw.setPosition(clawPosition);
-            arm.setPower(armPower);
+            armOne.setPower(armPower);
+            armTwo.setPower(armPower);
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
