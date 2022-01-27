@@ -55,7 +55,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
  */
 
 @TeleOp(name="Mecanum Test", group="Linear Opmode")
-@Disabled
+//@Disabled
 public class MecanumTest extends LinearOpMode {
 
     // Creates all the motor and servo variables
@@ -138,7 +138,7 @@ public class MecanumTest extends LinearOpMode {
             double rightRearPower;
             double leftFrontPower;
             double flyWheelPower;
-            double clawPosition;
+            double clawPosition = 0;
             double armPower;
 
             // Defines the variables for the parabolic drive
@@ -203,12 +203,11 @@ public class MecanumTest extends LinearOpMode {
                 flyWheelPower = 0;
             }
 
-
-            if (gamepad2.right_trigger != 0) {
+            if (clawPosition < gamepad2.right_trigger) {
                 clawPosition = gamepad2.right_trigger;
-            } else {
-                clawPosition = 0;
             }
+
+            clawPosition = clawPosition - gamepad2.left_trigger;
 
             double armCurve = 0.33;
             double armDeadzone = 0;
