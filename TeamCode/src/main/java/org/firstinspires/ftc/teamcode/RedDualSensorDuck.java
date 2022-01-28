@@ -148,7 +148,7 @@ public class RedDualSensorDuck extends LinearOpMode {
         armOne.setPower(0.0005);
         armTwo.setPower(0.0005);
 
-        while(distance.getDistance(DistanceUnit.INCH) <= 14) {
+        while(distance.getDistance(DistanceUnit.INCH) <= 12.5) {
             rightFront.setPower(0.6);
             leftFront.setPower(0.6);
             rightRear.setPower(0.6);
@@ -213,7 +213,7 @@ public class RedDualSensorDuck extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, -10,10, 1);
 
-        while(distance.getDistance(DistanceUnit.INCH) >= 9) {
+        while(distance.getDistance(DistanceUnit.INCH) >= 11) {
             rightFront.setPower(-0.5);
             leftFront.setPower(-0.5);
             rightRear.setPower(-0.5);
@@ -240,7 +240,7 @@ public class RedDualSensorDuck extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 10, -10, 1);
 
-        encoderDrive(DRIVE_SPEED, 100, 100, 11);
+        encoderDrive(0.8, 100, 100, 11);
 
         armOne.setPower(0);
         armTwo.setPower(0);

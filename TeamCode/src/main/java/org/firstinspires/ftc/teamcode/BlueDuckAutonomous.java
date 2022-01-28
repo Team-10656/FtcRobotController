@@ -171,7 +171,7 @@ public class BlueDuckAutonomous extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 10,-10, 1);
 
-        while(distance.getDistance(DistanceUnit.INCH) >= 9) {
+        while(distance.getDistance(DistanceUnit.INCH) >= 11) {
             rightFront.setPower(-0.5);
             leftFront.setPower(-0.5);
             rightRear.setPower(-0.5);
@@ -198,7 +198,7 @@ public class BlueDuckAutonomous extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, -10, 10, 1);
 
-        encoderDrive(DRIVE_SPEED, 100, 100, 11);
+        encoderDrive(0.8, 100, 100, 11);
 
         armOne.setPower(0);
         armTwo.setPower(0);
