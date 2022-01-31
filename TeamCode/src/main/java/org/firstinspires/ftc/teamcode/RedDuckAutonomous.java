@@ -140,12 +140,18 @@ public class RedDuckAutonomous extends LinearOpMode {
         armOne.setPower(0.0005);
         armTwo.setPower(0.0005);
 
-        while(distance.getDistance(DistanceUnit.INCH) <= 12) {
+        while(distance.getDistance(DistanceUnit.INCH) <= 13) {
             rightFront.setPower(0.6);
             leftFront.setPower(0.6);
             rightRear.setPower(0.6);
             leftRear.setPower(0.6);
         }
+        rightFront.setPower(-0.5);
+        leftFront.setPower(-0.5);
+        rightRear.setPower(-0.5);
+        leftRear.setPower(-0.5);
+
+        sleep(100);
 
         rightFront.setPower(0);
         leftFront.setPower(0);
