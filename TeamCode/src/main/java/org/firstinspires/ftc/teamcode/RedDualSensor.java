@@ -149,7 +149,7 @@ public class RedDualSensor extends LinearOpMode {
         armOne.setPower(0.0005);
         armTwo.setPower(0.0005);
 
-        while(distance.getDistance(DistanceUnit.INCH) <= 12.5) {
+        while(distance.getDistance(DistanceUnit.INCH) <= 12) {
             rightFront.setPower(0.6);
             leftFront.setPower(0.6);
             rightRear.setPower(0.6);
@@ -181,7 +181,7 @@ public class RedDualSensor extends LinearOpMode {
             armOne.setPower(-0.6);
             armTwo.setPower(-0.6);
 
-            sleep(350);
+            sleep(400);
 
             armOne.setPower(0.0005);
             armTwo.setPower(0.0005);
