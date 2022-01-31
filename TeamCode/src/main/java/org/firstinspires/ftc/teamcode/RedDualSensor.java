@@ -172,10 +172,10 @@ public class RedDualSensor extends LinearOpMode {
         if(distanceLeft.getDistance(DistanceUnit.INCH) <= 8) {
             encoderDrive(TURN_SPEED, -20, 20, 2);
 
-            armOne.setPower(-0.6);
-            armTwo.setPower(-0.6);
+            armOne.setPower(-0.3);
+            armTwo.setPower(-0.3);
 
-            sleep(600);
+            sleep(1000);
 
             armOne.setPower(0.0005);
             armTwo.setPower(0.0005);
@@ -184,10 +184,10 @@ public class RedDualSensor extends LinearOpMode {
         } else {
             encoderDrive(TURN_SPEED, -20, 20, 2);
 
-            armOne.setPower(-0.6);
-            armTwo.setPower(-0.6);
+            armOne.setPower(-0.3);
+            armTwo.setPower(-0.3);
 
-            sleep(375);
+            sleep(600);
 
             armOne.setPower(0.0005);
             armTwo.setPower(0.0005);
