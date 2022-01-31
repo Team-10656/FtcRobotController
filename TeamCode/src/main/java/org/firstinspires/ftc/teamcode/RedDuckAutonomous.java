@@ -203,7 +203,7 @@ public class RedDuckAutonomous extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED,  14,  14, 2);
 
-        encoderDrive(TURN_SPEED, 8, -8, 1);
+        encoderDrive(TURN_SPEED, 9, -9, 1);
 
         encoderDrive(0.8, 100, 100, 11);
 
