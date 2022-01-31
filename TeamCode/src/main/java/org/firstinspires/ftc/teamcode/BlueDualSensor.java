@@ -148,12 +148,19 @@ public class BlueDualSensor extends LinearOpMode {
         armOne.setPower(0.0005);
         armTwo.setPower(0.0005);
 
-        while(distance.getDistance(DistanceUnit.INCH) <= 12.5) {
+        while(distance.getDistance(DistanceUnit.INCH) <= 14) {
             rightFront.setPower(0.6);
             leftFront.setPower(0.6);
             rightRear.setPower(0.6);
             leftRear.setPower(0.6);
         }
+        rightFront.setPower(-0.5);
+        leftFront.setPower(-0.5);
+        rightRear.setPower(-0.5);
+        leftRear.setPower(-0.5);
+
+        sleep(100);
+
 
         rightFront.setPower(0);
         leftFront.setPower(0);
@@ -165,10 +172,10 @@ public class BlueDualSensor extends LinearOpMode {
         if(distanceLeft.getDistance(DistanceUnit.INCH) <= 8) {
             encoderDrive(TURN_SPEED, 20, -20, 2);
 
-            armOne.setPower(-0.6);
-            armTwo.setPower(-0.6);
+            armOne.setPower(-0.3);
+            armTwo.setPower(-0.3);
 
-            sleep(600);
+            sleep(1000);
 
             armOne.setPower(0.0005);
             armTwo.setPower(0.0005);
@@ -177,10 +184,10 @@ public class BlueDualSensor extends LinearOpMode {
         } else {
             encoderDrive(TURN_SPEED, 20, -20, 2);
 
-            armOne.setPower(-0.6);
-            armTwo.setPower(-0.6);
+            armOne.setPower(-0.3);
+            armTwo.setPower(-0.3);
 
-            sleep(350);
+            sleep(600);
 
             armOne.setPower(0.0005);
             armTwo.setPower(0.0005);

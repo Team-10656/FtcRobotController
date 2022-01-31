@@ -139,7 +139,7 @@ public class BlueDuckAutonomous extends LinearOpMode {
         armOne.setPower(0.0005);
         armTwo.setPower(0.0005);
 
-        while(distance.getDistance(DistanceUnit.INCH) <= 12) {
+        while(distance.getDistance(DistanceUnit.INCH) <= 14) {
             rightFront.setPower(0.6);
             leftFront.setPower(0.6);
             rightRear.setPower(0.6);
@@ -161,6 +161,12 @@ public class BlueDuckAutonomous extends LinearOpMode {
             rightRear.setPower(-0.5);
             leftRear.setPower(-0.5);
         }
+        rightFront.setPower(-0.5);
+        leftFront.setPower(-0.5);
+        rightRear.setPower(-0.5);
+        leftRear.setPower(-0.5);
+
+        sleep(100);
 
         rightFront.setPower(0);
         leftFront.setPower(0);
@@ -171,7 +177,7 @@ public class BlueDuckAutonomous extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 10,-10, 1);
 
-        while(distance.getDistance(DistanceUnit.INCH) >= 11) {
+        while(distance.getDistance(DistanceUnit.INCH) >= 12) {
             rightFront.setPower(-0.5);
             leftFront.setPower(-0.5);
             rightRear.setPower(-0.5);
@@ -186,7 +192,7 @@ public class BlueDuckAutonomous extends LinearOpMode {
         sleep(200);
 
         flywheel.setPower(0.8);
-        sleep(3000);
+        sleep(4000);
         flywheel.setPower(0);
 
         rightFront.setPower(0);
