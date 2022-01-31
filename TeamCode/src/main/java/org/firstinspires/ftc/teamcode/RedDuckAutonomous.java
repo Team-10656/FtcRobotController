@@ -193,7 +193,7 @@ public class RedDuckAutonomous extends LinearOpMode {
         sleep(200);
 
         flywheel.setPower(0.8);
-        sleep(3000);
+        sleep(4000);
         flywheel.setPower(0);
 
         rightFront.setPower(0);
