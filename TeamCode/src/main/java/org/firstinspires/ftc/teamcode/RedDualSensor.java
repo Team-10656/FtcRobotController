@@ -175,7 +175,7 @@ public class RedDualSensor extends LinearOpMode {
             armOne.setPower(-0.3);
             armTwo.setPower(-0.3);
 
-            sleep(1000);
+            sleep(1100);
 
             armOne.setPower(0.0005);
             armTwo.setPower(0.0005);
