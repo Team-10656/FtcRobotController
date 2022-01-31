@@ -174,7 +174,7 @@ public class RedDualSensorDuck extends LinearOpMode {
             armOne.setPower(-0.3);
             armTwo.setPower(-0.3);
 
-            sleep(100);
+            sleep(1000);
 
             armOne.setPower(0.0005);
             armTwo.setPower(0.0005);
