@@ -204,6 +204,8 @@ public class RedDualSensor extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 20, -20, 2);
 
+        sleep(400);
+
         encoderDrive(0.8, 60, 60, 7);
 
         armOne.setPower(0);
