@@ -196,7 +196,7 @@ public class DelayBlueDualSensorRight extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED, 22, 22, 2);
 
-        encoderDrive(TURN_SPEED, -20, 20, 2);
+        encoderDrive(TURN_SPEED, 20, -20, 2);
 
         encoderDrive(DRIVE_SPEED, 2, 2, 1);
 
