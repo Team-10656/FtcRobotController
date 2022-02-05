@@ -38,9 +38,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-@Autonomous(name="Blue Dual Sensor", group="Blue")
+@Autonomous(name="Blue Dual Sensor Right", group="Blue")
 //@Disabled
-public class BlueDualSensor extends LinearOpMode {
+public class DelayBlueDualSensorRight extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -135,6 +135,8 @@ public class BlueDualSensor extends LinearOpMode {
         telemetry.addData("Mode", "running");
         telemetry.update();
 
+        sleep(1000);
+
         leftClaw.setPosition(0);
         rightClaw.setPosition(0);
 
@@ -148,7 +150,7 @@ public class BlueDualSensor extends LinearOpMode {
         armOne.setPower(0.0005);
         armTwo.setPower(0.0005);
 
-        while(distance.getDistance(DistanceUnit.INCH) <= 14) {
+        while(distance.getDistance(DistanceUnit.INCH) <= 10) {
             rightFront.setPower(0.6);
             leftFront.setPower(0.6);
             rightRear.setPower(0.6);
@@ -160,7 +162,6 @@ public class BlueDualSensor extends LinearOpMode {
         leftRear.setPower(-0.5);
 
         sleep(100);
-
 
         rightFront.setPower(0);
         leftFront.setPower(0);
@@ -175,7 +176,7 @@ public class BlueDualSensor extends LinearOpMode {
             armOne.setPower(-0.3);
             armTwo.setPower(-0.3);
 
-            sleep(1000);
+            sleep(1100);
 
             armOne.setPower(0.0005);
             armTwo.setPower(0.0005);
@@ -197,10 +198,14 @@ public class BlueDualSensor extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, -20, 20, 2);
 
+        encoderDrive(DRIVE_SPEED, 4, 4, 1);
+
         leftClaw.setPosition(1);
         rightClaw.setPosition(1);
 
         sleep(1000);
+
+        encoderDrive(DRIVE_SPEED, -4, -4, 1);
 
         encoderDrive(TURN_SPEED, -20, 20, 2);
 

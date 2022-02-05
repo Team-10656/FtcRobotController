@@ -38,9 +38,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-@Autonomous(name="Blue Dual Sensor Duck", group="Blue")
+@Autonomous(name="Delay Blue Dual Sensor Left", group="Blue")
 //@Disabled
-public class BlueDualSensorDuck extends LinearOpMode {
+public class DelayBlueDualSensorLeft extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -135,6 +135,8 @@ public class BlueDualSensorDuck extends LinearOpMode {
         telemetry.addData("Mode", "running");
         telemetry.update();
 
+        sleep(5000);
+
         leftClaw.setPosition(0);
         rightClaw.setPosition(0);
 
@@ -205,52 +207,9 @@ public class BlueDualSensorDuck extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 20, -20, 2);
 
-        sleep(400);
+        sleep(1000);
 
-        while(distance.getDistance(DistanceUnit.INCH) >= 20) {
-            rightFront.setPower(-0.5);
-            leftFront.setPower(-0.5);
-            rightRear.setPower(-0.5);
-            leftRear.setPower(-0.5);
-        }
-
-        rightFront.setPower(0);
-        leftFront.setPower(0);
-        rightRear.setPower(0);
-        leftRear.setPower(0);
-
-        sleep(500);
-
-        encoderDrive(TURN_SPEED, 10,-10, 1);
-
-        while(distance.getDistance(DistanceUnit.INCH) >= 11) {
-            rightFront.setPower(-0.5);
-            leftFront.setPower(-0.5);
-            rightRear.setPower(-0.5);
-            leftRear.setPower(-0.5);
-        }
-
-        rightFront.setPower(-0.025);
-        leftFront.setPower(-0.025);
-        rightRear.setPower(-0.025);
-        leftRear.setPower(-0.025);
-
-        sleep(200);
-
-        flywheel.setPower(0.8);
-        sleep(4000);
-        flywheel.setPower(0);
-
-        rightFront.setPower(0);
-        leftFront.setPower(0);
-        rightRear.setPower(0);
-        leftRear.setPower(0);
-
-        encoderDrive(DRIVE_SPEED,  14,  14, 2);
-
-        encoderDrive(TURN_SPEED, -9, 9, 1);
-
-        encoderDrive(0.8, 100, 100, 11);
+        encoderDrive(0.8, 60, 60, 7);
 
         armOne.setPower(0);
         armTwo.setPower(0);
