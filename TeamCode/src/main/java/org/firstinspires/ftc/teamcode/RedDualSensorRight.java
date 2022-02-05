@@ -41,7 +41,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 @Autonomous(name="Red Dual Sensor", group="Red")
 //@Disabled
-public class RedDualSensor extends LinearOpMode {
+public class RedDualSensorRight extends LinearOpMode {
     // Sets the runtime variable to the elapsed time within autonomous
     private ElapsedTime runtime = new ElapsedTime();
 
