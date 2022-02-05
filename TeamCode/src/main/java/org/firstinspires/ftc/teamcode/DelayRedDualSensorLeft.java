@@ -209,7 +209,7 @@ public class DelayRedDualSensorLeft extends LinearOpMode {
 
         sleep(400);
 
-        encoderDrive(0.8, 60, 60, 7);
+        encoderDrive(0.8, 70, 70, 7);
 
         armOne.setPower(0);
         armTwo.setPower(0);
